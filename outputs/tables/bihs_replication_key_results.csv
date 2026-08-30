@@ -1,0 +1,9 @@
+sample,candidate_universe,n_events,gravity_log_loss,gis_ridge_log_loss,gis_gain_vs_gravity,cluster_bootstrap_ci_low,cluster_bootstrap_ci_high,nested_gis_log_loss,nested_gis_gain_vs_gravity
+b4_erosion,full_64,123,2.563182,2.465182,0.098000,0.027615,0.162745,2.434054,0.129128
+b4_erosion,interdistrict_63,71,3.255835,3.073631,0.182204,0.076071,0.287161,,
+b4_all,full_64,526,2.205739,2.147974,0.057765,0.029688,0.087873,2.089682,0.116056
+b4_all,interdistrict_63,236,3.253462,3.137721,0.115741,0.056320,0.179065,,
+v1_interval,full_64,1857,2.059756,1.951627,0.108129,0.081672,0.135039,1.844251,0.215505
+v1_interval,interdistrict_63,1208,2.021240,1.912863,0.108377,0.072748,0.145148,,
+v1_interval_r2_train_r3_test,full_64,1383,2.089771,1.995856,0.093915,,, ,
+v1_interval_r2_train_r3_test,interdistrict_63,842,2.052602,1.940528,0.112074,,, ,

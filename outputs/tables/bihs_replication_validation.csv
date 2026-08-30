@@ -1,0 +1,51 @@
+check,passed,observed,expected
+choice_set_2383_by_64,True,rows=152512; events=2383,152512 rows; 2383 events
+one_chosen_per_event,True,2383,2383
+all_choice_sets_64,True,[64],[64]
+no_grouped_household_leakage,True,0,0
+all_grouped_fits_converged,True,33,33
+all_wave_fits_converged,True,9,9
+oof_probability_sums,True,3.552713678800501e-15,<=1e-10
+oof_unique_keys,True,0,0
+b4_erosion_full_64_n,True,123,123
+b4_erosion_full_64_positive_gain,True,0.0980001497446219,>0
+b4_erosion_full_64_point_match,True,-4.0245584642661925e-16,<1e-10
+b4_erosion_full_64_bootstrap_positive,True,0.0276147705515086,>0
+b4_erosion_interdistrict_63_n,True,71,71
+b4_erosion_interdistrict_63_positive_gain,True,0.1822041732799824,>0
+b4_erosion_interdistrict_63_point_match,True,8.326672684688674e-17,<1e-10
+b4_erosion_interdistrict_63_bootstrap_positive,True,0.076070684295713,>0
+b4_all_full_64_n,True,526,526
+b4_all_full_64_positive_gain,True,0.0577646719707551,>0
+b4_all_full_64_point_match,True,9.71445146547012e-17,<1e-10
+b4_all_full_64_bootstrap_positive,True,0.029688292690886,>0
+v1_interval_full_64_n,True,1857,1857
+v1_interval_full_64_positive_gain,True,0.1081285793200179,>0
+v1_interval_full_64_point_match,True,9.71445146547012e-17,<1e-10
+v1_interval_full_64_bootstrap_positive,True,0.0816724579176668,>0
+v1_interval_interdistrict_63_n,True,1208,1208
+v1_interval_interdistrict_63_positive_gain,True,0.1083769466895048,>0
+v1_interval_interdistrict_63_point_match,True,-9.71445146547012e-17,<1e-10
+v1_interval_interdistrict_63_bootstrap_positive,True,0.0727483721348878,>0
+wave_holdout_full_positive,True,0.0939151110524219,>0
+wave_holdout_interdistrict_positive,True,0.1120744374579754,>0
+loo_all_fits_converged,True,27,27
+loo_probability_sums,True,3.552713678800501e-15,<=1e-10
+loo_unique_prediction_keys,True,0,0
+loo_no_household_overlap,True,0,0
+loo_fold_matches_heldout_origin,True,0,0
+loo_b4_erosion_full_64_coverage,True,events=123; folds=29,events=123; folds=29
+loo_b4_erosion_full_64_point_match,True,-1.0061396160665481e-16,<1e-10
+loo_b4_erosion_interdistrict_63_coverage,True,events=71; folds=21,events=71; folds=21
+loo_b4_erosion_interdistrict_63_point_match,True,-9.71445146547012e-17,<1e-10
+loo_b4_all_full_64_coverage,True,events=526; folds=61,events=526; folds=61
+loo_b4_all_full_64_point_match,True,2.983724378680108e-16,<1e-10
+loo_b4_all_interdistrict_63_coverage,True,events=236; folds=52,events=236; folds=52
+loo_b4_all_interdistrict_63_point_match,True,4.0245584642661925e-16,<1e-10
+loo_v1_interval_full_64_coverage,True,events=1857; folds=64,events=1857; folds=64
+loo_v1_interval_full_64_point_match,True,1.1102230246251565e-16,<1e-10
+loo_v1_interval_interdistrict_63_coverage,True,events=1208; folds=64,events=1208; folds=64
+loo_v1_interval_interdistrict_63_point_match,True,9.71445146547012e-17,<1e-10
+loo_v1_full_64_positive_interval,True,0.0738304453562997,>0
+loo_v1_interdistrict_63_positive_interval,True,0.073077869341412,>0
+loo_erosion_full_transportability_warning,True,-0.0157866925723134,<0 (pre-specified boundary report)

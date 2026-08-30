@@ -1,0 +1,21 @@
+ledger,wave,stage,n
+V1,w1,all file rows,6828
+V1,w1,reported current migrants,1660
+V1,w1,domestic migrants,1128
+V1,w1,valid public destination district 1-64,1128
+V1,w1,frozen primary interval sample,0
+V1,w2,all file rows,6536
+V1,w2,reported current migrants,634
+V1,w2,domestic migrants,487
+V1,w2,valid public destination district 1-64,474
+V1,w2,frozen primary interval sample,474
+V1,w3,all file rows,5994
+V1,w3,reported current migrants,1715
+V1,w3,domestic migrants,1415
+V1,w3,valid public destination district 1-64,1415
+V1,w3,frozen primary interval sample,1383
+B4,w2,all household rows,6436
+B4,w2,internal prior district 1-64,526
+B4,w2,interdistrict relocation,236
+B4,w2,river-erosion motivated,123
+B4,w2,"river-erosion, interdistrict, valid year",69

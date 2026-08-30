@@ -1,0 +1,164 @@
+table_name,column_position,column_name,observed_dtype,description,role
+events,1,event_id,object,"Deterministic event key: respondent ID, wave, and within-respondent event sequence.",derived/analytic
+events,2,respondent_id,object,Exact public BEMP respondent code used for cross-wave linkage.,source/provenance
+events,3,household_id_derived,object,Respondent code with the final role suffix removed; derived baseline household key.,derived/analytic
+events,4,baseline_location_lxx,object,Pseudonymized baseline sampling-location prefix from respondent code.,derived/analytic
+events,5,origin_district_codebook,object,Baseline district mapped from Lxx using the public respondent-code comment.,derived/analytic
+events,6,wave,object,Wave.,derived/analytic
+events,7,wave_number,int64,Wave number.,derived/analytic
+events,8,event_sequence_within_respondent,int64,Event sequence within respondent.,derived/analytic
+events,9,event_class,object,Conservative rule-based event category.,derived/analytic
+events,10,event_detection_confidence,object,Confidence in event timing/classification from questionnaire routing.,derived/analytic
+events,11,event_detection_rule,object,Exact deterministic rule used to create the event.,derived/analytic
+events,12,current_location_state,object,Current location state.,derived/analytic
+events,13,previous_migration_status,object,Previous migration status.,source/provenance
+events,14,previous_migration_type,object,Temporary/permanent classification of the previous survey's migration.,source/provenance
+events,15,new_old_location,object,New old location.,derived/analytic
+events,16,domestic_abroad,object,Domestic abroad.,derived/analytic
+events,17,destination_rural_urban,object,Destination rural urban.,derived/analytic
+events,18,destination_admin_level_raw,object,"Raw endpoint construct: city, district, origin district, abroad, or unavailable.",derived/analytic
+events,19,destination_admin_raw,object,Public named city or rural district; origin district for return events.,source/provenance
+events,20,destination_admin_standardized_provisional,object,Provisional string normalization only; not official gazetteer resolution.,derived/analytic
+events,21,destination_city_code,float64,Destination city code.,source/provenance
+events,22,destination_city_category,object,Destination city category.,source/provenance
+events,23,destination_city_other_text,object,Destination city other text.,source/provenance
+events,24,destination_rural_district_raw,object,Destination rural district raw.,source/provenance
+events,25,destination_rural_division_raw,object,Destination rural division raw.,source/provenance
+events,26,destination_observed_directly,bool,"True for a public destination response, false for inferred return-to-origin endpoint.",derived/analytic
+events,27,destination_named_admin_available,bool,True when a public named city/district endpoint is present.,derived/analytic
+events,28,destination_district_ready_without_city_lookup,bool,True for district/origin-district endpoints; cities remain unresolved.,derived/analytic
+events,29,needs_city_to_district_lookup,bool,True only when a city endpoint still lacks an official containing district after this resolution pass.,derived/analytic
+events,30,city_to_district_lookup_required_raw,bool,True when the original public endpoint was a named city requiring containment resolution.,derived/analytic
+events,31,normalization_action_provisional,object,Normalization action provisional.,derived/analytic
+events,32,normalization_confidence,object,Normalization confidence.,derived/analytic
+events,33,destination_place_official,object,Officially standardized place name represented by the raw response.,derived/analytic
+events,34,destination_place_type_official,object,Documented geographic type of the resolved place.,derived/analytic
+events,35,destination_district_official,object,Official containing district used as the Stage 1 choice endpoint.,derived/analytic
+events,36,destination_resolution_method,object,"Exact, spelling/language, upazila-containment, or locality-containment resolution method.",derived/analytic
+events,37,destination_resolution_confidence,object,Resolution confidence after official-source review.,derived/analytic
+events,38,destination_resolution_source_url,object,Official Bangladesh government source supporting the resolution.,derived/analytic
+events,39,destination_resolution_source_detail,object,Concise description of the evidence supplied by the official source.,derived/analytic
+events,40,destination_resolution_source_access_date,object,Destination resolution source access date.,derived/analytic
+events,41,destination_resolution_manual_review_flag,bool,True for spelling/language variants requiring manual review.,derived/analytic
+events,42,destination_resolution_status,object,Destination resolution status.,derived/analytic
+events,43,destination_district_endpoint_available,bool,True when a named public endpoint has an official containing district.,derived/analytic
+events,44,move_scope,object,"Decoded whole-household, part-household, or solo move response.",source/provenance
+events,45,distance_from_previous_location_m,float64,Coordinate-derived distance in meters; coordinates/endpoints are withheld.,source/provenance
+events,46,return_plan,object,Return plan.,source/provenance
+events,47,lagged_home_erosion,object,Latest valid home-village erosion occurrence response from a strictly earlier wave.,derived/analytic
+events,48,lagged_home_erosion_source_wave,object,Lagged home erosion source wave.,derived/analytic
+events,49,lagged_home_flood,object,Latest valid home-village flood occurrence response from a strictly earlier wave.,derived/analytic
+events,50,lagged_home_flood_source_wave,object,Lagged home flood source wave.,derived/analytic
+events,51,lagged_home_shock_observed,bool,Lagged home shock observed.,derived/analytic
+events,52,lagged_home_shock_any_yes,bool,Lagged home shock any yes.,derived/analytic
+events,53,concurrent_home_erosion,object,Home-village erosion occurrence reported in the event wave.,source/provenance
+events,54,concurrent_home_flood,object,Home-village flood occurrence reported in the event wave.,source/provenance
+events,55,reason_relatives_at_destination,object,Decoded selected/not-selected realized-destination reason or its source variable.,derived/analytic
+events,56,reason_better_earning,object,Decoded selected/not-selected realized-destination reason or its source variable.,derived/analytic
+events,57,reason_safer_from_flood,object,Decoded selected/not-selected realized-destination reason or its source variable.,derived/analytic
+events,58,reason_safer_from_erosion,object,Decoded selected/not-selected realized-destination reason or its source variable.,derived/analytic
+events,59,reason_schooling,object,Decoded selected/not-selected realized-destination reason or its source variable.,derived/analytic
+events,60,reason_marriage,object,Decoded selected/not-selected realized-destination reason or its source variable.,derived/analytic
+events,61,reason_property_at_destination,object,Decoded selected/not-selected realized-destination reason or its source variable.,derived/analytic
+events,62,climate_destination_reason_any,bool,Safer-from-flood or safer-from-erosion selected as realized-destination reason.,derived/analytic
+events,63,climate_screen_any,bool,Lagged shock yes or climate-safety destination reason; screening flag only.,derived/analytic
+events,64,whole_or_partial_household_move,bool,Whole or partial household move.,derived/analytic
+events,65,is_return_event,bool,Is return event.,derived/analytic
+events,66,is_new_destination_event,bool,Is new destination event.,derived/analytic
+events,67,domestic_event,bool,Domestic event.,derived/analytic
+events,68,stage1_named_endpoint_eligible,bool,Domestic new-destination event with named endpoint retained by duplicate adjudication.,derived/analytic
+events,69,stage1_district_endpoint_eligible,bool,Named-endpoint eligibility plus official containing-district resolution.,derived/analytic
+events,70,stage1_household_relocation_eligible,bool,District-endpoint eligibility plus whole/partial-household move.,derived/analytic
+events,71,stage1_climate_screen_eligible,bool,Household-relocation eligibility plus broad climate screen.,derived/analytic
+events,72,duplicate_respondent_wave_flag,bool,Duplicate respondent wave flag.,derived/analytic
+events,73,duplicate_adjudication_keep,bool,True for unique rows and the retained latest completed interview in each duplicate pair.,derived/analytic
+events,74,duplicate_adjudication_status,object,"Unique, retained, or superseded duplicate status; no raw event row is deleted.",derived/analytic
+events,75,duplicate_adjudication_confidence,object,Duplicate adjudication confidence.,derived/analytic
+events,76,duplicate_adjudication_rationale,object,Evidence-based reason for retaining or superseding a duplicate row.,derived/analytic
+events,77,first_stage1_exclusion_reason,object,First sequential reason the event is outside the broad climate-screen sample.,derived/analytic
+events,78,source_file,object,Exact public quantitative CSV containing the source row.,source/provenance
+events,79,source_row_csv_1_based,int64,CSV row number including header as row 1.,source/provenance
+events,80,source_interview_date,object,Source interview date.,derived/analytic
+events,81,respondent_id_variable,object,Exact BEMP variable supplying or documenting the corresponding field.,source/provenance
+events,82,current_location_state_variable,object,Exact BEMP variable supplying or documenting the corresponding field.,source/provenance
+events,83,previous_migration_status_variable,object,Exact BEMP variable supplying or documenting the corresponding field.,source/provenance
+events,84,previous_migration_type_variable,object,Exact BEMP variable supplying or documenting the corresponding field.,source/provenance
+events,85,new_old_location_variable,object,Exact BEMP variable supplying or documenting the corresponding field.,source/provenance
+events,86,move_scope_variable,object,Exact BEMP variable supplying or documenting the corresponding field.,source/provenance
+events,87,distance_variable,object,Exact BEMP variable supplying or documenting the corresponding field.,source/provenance
+events,88,return_plan_variable,object,Exact BEMP variable supplying or documenting the corresponding field.,source/provenance
+events,89,concurrent_erosion_variable,object,Exact BEMP variable supplying or documenting the corresponding field.,source/provenance
+events,90,concurrent_flood_variable,object,Exact BEMP variable supplying or documenting the corresponding field.,source/provenance
+events,91,lagged_home_erosion_variable,object,Exact BEMP variable supplying or documenting the corresponding field.,source/provenance
+events,92,lagged_home_flood_variable,object,Exact BEMP variable supplying or documenting the corresponding field.,source/provenance
+events,93,reason_relatives_at_destination_variable,object,Exact BEMP variable supplying or documenting the corresponding field.,source/provenance
+events,94,reason_better_earning_variable,object,Exact BEMP variable supplying or documenting the corresponding field.,source/provenance
+events,95,reason_safer_from_flood_variable,object,Exact BEMP variable supplying or documenting the corresponding field.,source/provenance
+events,96,reason_safer_from_erosion_variable,object,Exact BEMP variable supplying or documenting the corresponding field.,source/provenance
+events,97,reason_schooling_variable,object,Exact BEMP variable supplying or documenting the corresponding field.,source/provenance
+events,98,reason_marriage_variable,object,Exact BEMP variable supplying or documenting the corresponding field.,source/provenance
+events,99,reason_property_at_destination_variable,object,Exact BEMP variable supplying or documenting the corresponding field.,source/provenance
+respondent_wave_state,1,respondent_id,object,Exact public BEMP respondent code used for cross-wave linkage.,source/provenance
+respondent_wave_state,2,household_id_derived,object,Respondent code with the final role suffix removed; derived baseline household key.,derived/analytic
+respondent_wave_state,3,baseline_location_lxx,object,Pseudonymized baseline sampling-location prefix from respondent code.,derived/analytic
+respondent_wave_state,4,origin_district_codebook,object,Baseline district mapped from Lxx using the public respondent-code comment.,derived/analytic
+respondent_wave_state,5,wave,object,Wave.,derived/analytic
+respondent_wave_state,6,wave_number,int64,Wave number.,derived/analytic
+respondent_wave_state,7,survey_route,object,Survey route.,derived/analytic
+respondent_wave_state,8,current_location_state,object,Current location state.,derived/analytic
+respondent_wave_state,9,previous_migration_status,object,Previous migration status.,source/provenance
+respondent_wave_state,10,previous_migration_type,object,Temporary/permanent classification of the previous survey's migration.,source/provenance
+respondent_wave_state,11,home_erosion_occurrence,object,Home erosion occurrence.,derived/analytic
+respondent_wave_state,12,home_flood_occurrence,object,Home flood occurrence.,derived/analytic
+respondent_wave_state,13,source_file,object,Exact public quantitative CSV containing the source row.,source/provenance
+respondent_wave_state,14,source_row_csv_1_based,int64,CSV row number including header as row 1.,source/provenance
+respondent_wave_state,15,respondent_id_variable,object,Exact BEMP variable supplying or documenting the corresponding field.,source/provenance
+respondent_wave_state,16,current_location_state_variable,object,Exact BEMP variable supplying or documenting the corresponding field.,source/provenance
+respondent_wave_state,17,previous_migration_status_variable,object,Exact BEMP variable supplying or documenting the corresponding field.,source/provenance
+respondent_wave_state,18,previous_migration_type_variable,object,Exact BEMP variable supplying or documenting the corresponding field.,source/provenance
+respondent_wave_state,19,home_erosion_variable,object,Exact BEMP variable supplying or documenting the corresponding field.,source/provenance
+respondent_wave_state,20,home_flood_variable,object,Exact BEMP variable supplying or documenting the corresponding field.,source/provenance
+respondent_wave_state,21,duplicate_respondent_wave_flag,bool,Duplicate respondent wave flag.,derived/analytic
+crosswalk,1,admin_level_raw,object,Admin level raw.,normalization
+crosswalk,2,raw_value,object,Unmodified non-missing public admin string/category used in the crosswalk.,normalization
+crosswalk,3,standardized_name_provisional,object,Provisional normalization; requires official validation.,normalization
+crosswalk,4,normalization_action_provisional,object,Normalization action provisional.,normalization
+crosswalk,5,normalization_confidence,object,Normalization confidence.,normalization
+crosswalk,6,event_count,int64,Event count.,normalization
+crosswalk,7,waves,object,Waves.,normalization
+crosswalk,8,source_files,object,Source files.,normalization
+crosswalk,9,destination_place_official,object,Officially standardized place name represented by the raw response.,normalization
+crosswalk,10,destination_place_type_official,object,Documented geographic type of the resolved place.,normalization
+crosswalk,11,destination_district_official,object,Official containing district used as the Stage 1 choice endpoint.,normalization
+crosswalk,12,destination_resolution_method,object,"Exact, spelling/language, upazila-containment, or locality-containment resolution method.",normalization
+crosswalk,13,destination_resolution_confidence,object,Resolution confidence after official-source review.,normalization
+crosswalk,14,destination_resolution_source_url,object,Official Bangladesh government source supporting the resolution.,normalization
+crosswalk,15,destination_resolution_source_detail,object,Concise description of the evidence supplied by the official source.,normalization
+crosswalk,16,destination_resolution_source_access_date,object,Destination resolution source access date.,normalization
+crosswalk,17,destination_resolution_manual_review_flag,bool,True for spelling/language variants requiring manual review.,normalization
+crosswalk,18,destination_resolution_status,object,Destination resolution status.,normalization
+crosswalk,19,requires_city_to_district_lookup,bool,Requires city to district lookup.,normalization
+crosswalk,20,requires_official_admin_validation,bool,Requires official admin validation.,normalization
+crosswalk,21,review_status,object,Review status.,normalization
+crosswalk,22,notes,object,Notes.,normalization
+duplicate_adjudication,1,event_id,object,"Deterministic event key: respondent ID, wave, and within-respondent event sequence.",normalization
+duplicate_adjudication,2,respondent_id,object,Exact public BEMP respondent code used for cross-wave linkage.,source/provenance
+duplicate_adjudication,3,wave,object,Wave.,normalization
+duplicate_adjudication,4,source_file,object,Exact public quantitative CSV containing the source row.,source/provenance
+duplicate_adjudication,5,source_row_csv_1_based,int64,CSV row number including header as row 1.,source/provenance
+duplicate_adjudication,6,source_interview_date,object,Source interview date.,normalization
+duplicate_adjudication,7,destination_admin_level_raw,object,"Raw endpoint construct: city, district, origin district, abroad, or unavailable.",normalization
+duplicate_adjudication,8,destination_admin_raw,object,Public named city or rural district; origin district for return events.,source/provenance
+duplicate_adjudication,9,destination_district_official,object,Official containing district used as the Stage 1 choice endpoint.,normalization
+duplicate_adjudication,10,move_scope,object,"Decoded whole-household, part-household, or solo move response.",source/provenance
+duplicate_adjudication,11,climate_screen_any,bool,Lagged shock yes or climate-safety destination reason; screening flag only.,normalization
+duplicate_adjudication,12,duplicate_adjudication_keep,bool,True for unique rows and the retained latest completed interview in each duplicate pair.,normalization
+duplicate_adjudication,13,duplicate_adjudication_status,object,"Unique, retained, or superseded duplicate status; no raw event row is deleted.",normalization
+duplicate_adjudication,14,duplicate_adjudication_confidence,object,Duplicate adjudication confidence.,normalization
+duplicate_adjudication,15,duplicate_adjudication_rationale,object,Evidence-based reason for retaining or superseding a duplicate row.,normalization
+sample_flow,1,step,object,Step.,summary
+sample_flow,2,criterion,object,Criterion.,summary
+sample_flow,3,remaining_events,int64,Number of event-ledger rows remaining after the sequential criterion.,summary
+sample_flow,4,removed_at_step,float64,Difference from the preceding sequential flow step.,summary
+sample_flow,5,percent_of_all_events,float64,Remaining events divided by all conservative event-rich records.,summary
+sample_flow,6,notes,object,Notes.,summary

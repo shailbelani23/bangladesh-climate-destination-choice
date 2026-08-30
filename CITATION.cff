@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this research or code, please cite it."
+title: "Where do climate-affected households go? Revealed destination choice after flood and river erosion in Bangladesh"
+type: software
+authors:
+  - family-names: Belani
+    given-names: Shail
+    affiliation: Northwestern University
+    email: shailbelani2027@u.northwestern.edu
+date-released: 2026-08-30
+license: MIT
+repository-code: "https://github.com/shailbelani23/bangladesh-climate-destination-choice"

@@ -1,0 +1,7 @@
+Slide 1: BIHS public-use data, https://doi.org/10.7910/DVN/OR6MHT
+Slide 2: Frozen out-of-fold household example in outputs/figures/anonymized_household_destination_story.png
+Slide 3: Simini et al. radiation model, https://doi.org/10.1038/nature10856; GHSL, https://doi.org/10.2760/098587
+Slide 4: BEMP, https://doi.org/10.5281/zenodo.18229498; BIHS, https://doi.org/10.7910/DVN/OR6MHT
+Slide 5: Frozen validation outputs in outputs/tables/bihs_replication_validation.csv
+Slide 6: Audited network statistic in publication/qa/manuscript_number_registry.csv
+Slide 7: Frozen paper and claim sheet in publication/

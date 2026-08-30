@@ -1,0 +1,21 @@
+check,passed,observed,requirement,severity
+model_ready_rows,True,36672,"573 x 64 = 36,672",fatal
+model_ready_events,True,573,573,fatal
+candidate_count_per_event,True,min=64; max=64,exactly 64 for every event,fatal
+chosen_count_per_event,True,min=1; max=1,exactly one chosen alternative per event,fatal
+gis_feature_missingness,True,0,zero,fatal
+stage2_gravity_reproduction,True,matched=16; max_logloss_diff=5.24e-09; max_top1_diff=0,16 benchmark cells; differences <1e-7 and <1e-12,fatal
+oof_probability_sums,True,1.9984014443252818e-15,maximum absolute error <1e-12,fatal
+oof_chosen_probabilities,True,min=4.59e-05; max=0.913,0 < p <= 1,fatal
+outer_fit_convergence,True,412,all 412 folds,fatal
+bootstrap_fit_convergence,True,1.0,>= 0.99,fatal
+household_split_overlap,True,0,zero in every primary fold,fatal
+inner_lambda_unique_selection,True,min=1; max=1,one selected lambda per tuning context,fatal
+selected_lambdas_preregistered,True,"[0.001, 0.01, 0.1, 1.0, 100.0]","[0.001, 0.01, 0.1, 1.0, 10.0, 100.0]",fatal
+feature_whitelist,True,no disallowed features,only frozen baseline/GIS/interactions/nested terms,fatal
+primary_direct_gis_improves_logloss,True,0.1080809235781405,>0,substantive
+primary_nested_gis_improves_logloss,True,0.1240133556797209,>0,substantive
+paired_cluster_ci_positive__gis_joint_ridge,True,"[0.0227, 0.1889]",95% household-cluster interval entirely >0,substantive
+paired_cluster_ci_positive__nested_gis_ridge,True,"[0.0154, 0.2332]",95% household-cluster interval entirely >0,substantive
+unseen_origin_transportability_warning,True,-0.1265052168225058,record negative full-universe improvement; do not claim unseen-origin transportability,warning
+shock_interaction_predictive_gain_uncertain,True,"gain=0.0097; CI=[-0.0111, 0.0306]",interval includes zero; retain as secondary,warning

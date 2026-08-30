@@ -1,0 +1,19 @@
+step,criterion,remaining_events,removed_at_step,percent_of_all_events,notes
+01,All conservative prospective/event-rich records,1066,0.0,1.0,
+02,New destination events (excludes returns and wave-6 first-observed snapshot),659,407.0,0.6181988742964353,
+03,Domestic new destination,656,3.0,0.6153846153846154,
+04,Named city or rural district available,575,81.0,0.5393996247654784,
+05,Official containing district resolved,575,0.0,0.5393996247654784,All 127 unique named endpoint strings have a documented official district resolution.
+06,Retained after duplicate respondent-wave adjudication,573,2.0,0.5375234521575984,
+07,Whole- or partial-household relocation,264,309.0,0.24765478424015008,
+08,Lagged home flood/erosion observed,262,2.0,0.24577861163227016,
+09,Climate screen: lagged shock yes or climate-safety destination reason,215,47.0,0.20168855534709193,"Screening definition, not a causal climate-migration classification."
+W_w6_M,Wave summary: w6_M,187,,0.175422138836773,"{""new_destination"": 0, ""return_home"": 0, ""first_observed_snapshot"": 187, ""named_endpoint"": 171, ""household_relocation_eligible"": 0}"
+W_w7,Wave summary: w7,120,,0.1125703564727955,"{""new_destination"": 69, ""return_home"": 51, ""first_observed_snapshot"": 0, ""named_endpoint"": 108, ""household_relocation_eligible"": 20}"
+W_w8,Wave summary: w8,83,,0.07786116322701689,"{""new_destination"": 63, ""return_home"": 20, ""first_observed_snapshot"": 0, ""named_endpoint"": 73, ""household_relocation_eligible"": 29}"
+W_w9,Wave summary: w9,58,,0.054409005628517824,"{""new_destination"": 33, ""return_home"": 25, ""first_observed_snapshot"": 0, ""named_endpoint"": 54, ""household_relocation_eligible"": 12}"
+W_w10,Wave summary: w10,64,,0.0600375234521576,"{""new_destination"": 43, ""return_home"": 21, ""first_observed_snapshot"": 0, ""named_endpoint"": 59, ""household_relocation_eligible"": 15}"
+W_w11,Wave summary: w11,63,,0.05909943714821764,"{""new_destination"": 40, ""return_home"": 23, ""first_observed_snapshot"": 0, ""named_endpoint"": 54, ""household_relocation_eligible"": 7}"
+W_w12_M,Wave summary: w12_M,179,,0.16791744840525327,"{""new_destination"": 179, ""return_home"": 0, ""first_observed_snapshot"": 0, ""named_endpoint"": 171, ""household_relocation_eligible"": 89}"
+W_w13,Wave summary: w13,162,,0.15196998123827393,"{""new_destination"": 82, ""return_home"": 80, ""first_observed_snapshot"": 0, ""named_endpoint"": 150, ""household_relocation_eligible"": 37}"
+W_w14_M,Wave summary: w14_M,150,,0.14071294559099437,"{""new_destination"": 150, ""return_home"": 0, ""first_observed_snapshot"": 0, ""named_endpoint"": 127, ""household_relocation_eligible"": 55}"

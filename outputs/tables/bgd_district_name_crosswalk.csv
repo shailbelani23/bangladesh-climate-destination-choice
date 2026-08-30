@@ -1,0 +1,10 @@
+source_name_raw,canonical_district,source_context,action
+Barisal,Barishal,DGHS/BBS 2020 ADM2 geometry,exact explicit rename
+Bogra,Bogura,DGHS/BBS 2020 ADM2 geometry,exact explicit rename
+Brahamanbaria,Brahmanbaria,DGHS/BBS 2020 ADM2 geometry,exact explicit rename
+Chittagong,Chattogram,DGHS/BBS 2020 ADM2 geometry,exact explicit rename
+Comilla,Cumilla,DGHS/BBS 2020 ADM2 geometry,exact explicit rename
+Jessore,Jashore,DGHS/BBS 2020 ADM2 geometry,exact explicit rename
+Maulvibazar,Moulvibazar,DGHS/BBS 2020 ADM2 geometry,exact explicit rename
+Nawabganj,Chapainawabganj,DGHS/BBS 2020 ADM2 geometry,exact explicit rename
+Netrokona,Netrakona,BBS National Report Table P02 and one BEMP endpoint,exact explicit spelling harmonization

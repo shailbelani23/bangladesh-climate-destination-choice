@@ -1,0 +1,25 @@
+check_id,status,evidence,source
+registry_C01,PASS,registry row matches frozen summary,outputs/tables/cross_dataset_replication_summary.csv
+registry_C02,PASS,registry row matches frozen summary,outputs/tables/cross_dataset_replication_summary.csv
+registry_C03,PASS,registry row matches frozen summary,outputs/tables/cross_dataset_replication_summary.csv
+registry_C04,PASS,registry row matches frozen summary,outputs/tables/cross_dataset_replication_summary.csv
+registry_C05,PASS,registry row matches frozen summary,outputs/tables/cross_dataset_replication_summary.csv
+registry_C06,PASS,registry row matches frozen summary,outputs/tables/cross_dataset_replication_summary.csv
+registry_C07,PASS,registry row matches frozen summary,outputs/tables/cross_dataset_replication_summary.csv
+registry_C08,PASS,registry row matches frozen summary,outputs/tables/cross_dataset_replication_summary.csv
+registry_C09,PASS,registry row matches frozen summary,outputs/tables/cross_dataset_replication_summary.csv
+registry_C10,PASS,registry row matches frozen summary,outputs/tables/cross_dataset_replication_summary.csv
+registry_C11,PASS,registry row matches frozen summary,outputs/tables/cross_dataset_replication_summary.csv
+registry_H01,PASS,household score matches held-out prediction,outputs/tables/bihs_replication_oof_predictions_grouped.csv
+registry_H02,PASS,household score matches held-out prediction,outputs/tables/bihs_replication_oof_predictions_grouped.csv
+registry_N01,PASS,1815 of 1857,outputs/tables/bihs_internal_migration_events.csv
+manuscript_bemp_main,PASS,missing=,publication/manuscript/manuscript.md
+manuscript_bihs_erosion,PASS,missing=,publication/manuscript/manuscript.md
+manuscript_wide_origin,PASS,missing=,publication/manuscript/manuscript.md
+manuscript_household,PASS,missing=,publication/manuscript/manuscript.md
+manuscript_network,PASS,missing=,publication/manuscript/manuscript.md
+prose_banned_terms,PASS,hits=,publication/*.md
+a11y_bangladesh_climate_destination_choice_manuscript.a11y,PASS,zero reported issues,publication/manuscript/bangladesh_climate_destination_choice_manuscript.a11y.json
+a11y_bangladesh_climate_destination_choice_claim_sheet.a11y,PASS,zero reported issues,publication/bangladesh_climate_destination_choice_claim_sheet.a11y.json
+presentation_slide_count,PASS,7,publication/presentation/bangladesh_climate_destination_choice_7_slide_presentation.pptx
+public_release_boundary,PASS,,.gitignore and git index

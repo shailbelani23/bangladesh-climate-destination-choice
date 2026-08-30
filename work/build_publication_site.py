@@ -1,0 +1,57 @@
+#!/usr/bin/env python3
+"""Create standalone interactive pages and the public project landing page."""
+
+from pathlib import Path
+import shutil
+
+ROOT = Path(__file__).resolve().parents[1]
+VIZ = ROOT / "publication" / "interactive"
+DOCS = ROOT / "docs"
+ASSETS = DOCS / "assets"
+
+BASE_CSS = """
+:root{--background:#f7f9fb;--foreground:#17324f;--muted-foreground:#61758d;--border:#cfd9e3;--viz-series-1:#0b8793;--viz-series-2:#d96b2b;--destructive:#cf553b;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color-scheme:light}
+*{box-sizing:border-box}body{margin:0;background:var(--background);color:var(--foreground);line-height:1.55}main{width:min(1040px,calc(100% - 32px));margin:0 auto;padding:40px 0 70px}h1{font-size:clamp(2.1rem,6vw,4.8rem);line-height:.98;letter-spacing:-.045em;margin:.25em 0}h2{font-size:clamp(1.45rem,3vw,2.25rem);line-height:1.12;letter-spacing:-.025em;margin:1.7em 0 .6em}p{font-size:1.05rem;max-width:72ch}.kicker{color:#d96b2b;font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.lede{font-size:clamp(1.18rem,2vw,1.5rem);max-width:62ch;color:#334e68}.metric{font-size:clamp(2.2rem,7vw,5.5rem);font-weight:800;letter-spacing:-.05em;color:#0b8793;line-height:1}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}.figure{margin:34px 0}.figure img{width:100%;height:auto;border:1px solid var(--border);background:white}.caption{font-size:.9rem;color:var(--muted-foreground);max-width:86ch}.viz-controls{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0}.form-label{display:grid;gap:5px;font-size:.83rem;font-weight:700}.form-select,.btn{font:inherit;border:1px solid var(--border);background:white;color:var(--foreground);border-radius:7px;padding:8px 11px}.btn{cursor:pointer}.btn-primary{background:#0b8793;color:white;border-color:#0b8793}.card{background:white;border:1px solid var(--border);border-radius:8px;padding:16px;margin-top:12px}.text-small{font-size:.88rem}.text-muted{color:var(--muted-foreground)}nav{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:34px}nav a,a{color:#096a74;text-underline-offset:3px}.story-step{border-left:4px solid #d96b2b;padding-left:18px;margin:24px 0}.note{background:#eaf3f4;border-left:4px solid #0b8793;padding:16px 18px;margin:28px 0;max-width:76ch}footer{border-top:1px solid var(--border);margin-top:50px;padding-top:20px;color:var(--muted-foreground);font-size:.9rem}@media(max-width:760px){.grid{grid-template-columns:1fr}main{width:min(100% - 22px,1040px);padding-top:24px}}
+"""
+
+
+def page(title, body):
+    return f"""<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{title}</title><style>{BASE_CSS}</style></head><body><main>{body}</main></body></html>"""
+
+
+def main():
+    DOCS.mkdir(parents=True, exist_ok=True)
+    ASSETS.mkdir(parents=True, exist_ok=True)
+    figures = {
+        "household.png": ROOT / "outputs/figures/anonymized_household_destination_story.png",
+        "forest.png": ROOT / "outputs/figures/cross_dataset_gis_gain_forest.png",
+        "transport.png": ROOT / "outputs/figures/validation_transportability_comparison.png",
+    }
+    for name, source in figures.items():
+        shutil.copy2(source, ASSETS / name)
+
+    evidence = (VIZ / "climate-mobility-evidence.html").read_text()
+    household = (VIZ / "one-household-journey.html").read_text()
+    (DOCS / "evidence.html").write_text(page("Climate mobility evidence explorer", '<nav><a href="index.html">Back to the story</a></nav>' + evidence))
+    (DOCS / "household.html").write_text(page("One household journey", '<nav><a href="index.html">Back to the story</a></nav>' + household))
+
+    body = """
+<nav><a href="#story">Story</a><a href="#finding">Finding</a><a href="household.html">Household explorer</a><a href="evidence.html">Evidence explorer</a><a href="../publication/manuscript/manuscript.pdf">Paper</a></nav>
+<p class="kicker">Climate mobility in Bangladesh</p>
+<h1>The river took their land.<br>Where did they go?</h1>
+<p class="lede">An anonymized household moved from Faridpur to Manikganj after river erosion. This project asks why that destination became the observed choice among 64 districts.</p>
+<div class="figure"><img src="assets/household.png" alt="Map of Bangladesh showing an anonymized move from Faridpur to Manikganj. Gravity assigned Manikganj 7.0 percent probability and rank 6; GIS assigned 13.7 percent and rank 2."><p class="caption">One household illustration. The survey does not reveal a name or full biography, and the model does not reconstruct private reasoning.</p></div>
+<section id="story"><h2>What we know about the person</h2><div class="story-step"><p><strong>Loss.</strong> The household reported losing land or homestead land to river erosion.</p></div><div class="story-step"><p><strong>Move.</strong> The household head reported moving from Faridpur to Manikganj in 2010.</p></div><div class="story-step"><p><strong>Choice.</strong> The model compared Manikganj with every other district using information available for all candidates.</p></div><p>We do not know the household's name, emotions, finances, or private discussion. The story stays inside the facts the survey records.</p></section>
+<section id="finding"><h2>What the model added</h2><div class="grid"><div><div class="metric">7.0%</div><p>Probability gravity assigned to Manikganj using distance and population. It ranked sixth.</p></div><div><div class="metric">13.7%</div><p>Probability after adding flood history, built surface, urban access, and cropland. It ranked second.</p></div></div><div class="note">The model made the household's observed destination more plausible. It did not prove why the household moved or why Manikganj won the private decision.</div></section>
+<h2>The result repeats in two surveys</h2><div class="figure"><img src="assets/forest.png" alt="Forest plot of eight cross-dataset GIS gains. All point estimates favor GIS; seven displayed intervals lie above zero and the BEMP interdistrict interval touches zero."><p class="caption">Positive values mean the GIS model assigned more probability to observed destinations than gravity did.</p></div>
+<h2>Where the model travels, and where it does not</h2><div class="figure"><img src="assets/transport.png" alt="Comparison of grouped, unseen-origin, and later-wave tests. National migrant gains stay near 0.1; full-choice climate gains turn negative for unseen origins while interdistrict gains remain positive."><p class="caption">Destination ranking transfers nationally. Predicting whether a climate-affected household stays within an unseen origin district requires more local information.</p></div>
+<p><a href="household.html">Explore the household's 64 candidate probabilities</a> or <a href="evidence.html">filter the complete cross-dataset evidence</a>.</p>
+<footer>Research by Shail Belani, Northwestern University and the Global Poverty Research Lab. Results are predictive, district-level, and conditional on an observed move.</footer>
+"""
+    (DOCS / "index.html").write_text(page("Where do climate-affected households go?", body))
+    print(DOCS / "index.html")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,23 @@
+dataset,sample,candidate_universe,validation_scheme,n_events,gis_gain_direction,gis_gain_vs_gravity,cluster_interval_assessment
+BEMP,household_lagged_shock_yes,full_64,household_grouped_5fold,184,positive,0.1080809235781405,positive
+BEMP,household_lagged_shock_yes,interdistrict_63,household_grouped_5fold,71,positive,0.3269330806231263,crosses zero
+BEMP,household_lagged_shock_yes,full_64,leave_one_origin_out,184,negative,-0.1265052168225058,not computed
+BEMP,household_lagged_shock_yes,interdistrict_63,leave_one_origin_out,71,positive,0.223638883516593,not computed
+BEMP,household_relocation,full_64,household_grouped_5fold,264,positive,0.0952851157021148,positive
+BEMP,household_relocation,interdistrict_63,household_grouped_5fold,107,positive,0.2945548373606605,crosses zero
+BEMP,household_relocation,full_64,leave_one_origin_out,264,negative,-0.2783382470326256,not computed
+BEMP,household_relocation,interdistrict_63,leave_one_origin_out,107,positive,0.2764831724113459,not computed
+BIHS,b4_all,full_64,household_grouped_5fold,526,positive,0.0577646719707551,positive
+BIHS,b4_all,interdistrict_63,household_grouped_5fold,236,positive,0.1157410671970664,positive
+BIHS,b4_all,full_64,leave_one_origin_out,526,positive,0.0272763461004315,crosses zero
+BIHS,b4_all,interdistrict_63,leave_one_origin_out,236,positive,0.0822663441949069,positive
+BIHS,b4_erosion,full_64,household_grouped_5fold,123,positive,0.0980001497446219,positive
+BIHS,b4_erosion,interdistrict_63,household_grouped_5fold,71,positive,0.1822041732799824,positive
+BIHS,b4_erosion,full_64,leave_one_origin_out,123,negative,-0.0157866925723135,crosses zero
+BIHS,b4_erosion,interdistrict_63,leave_one_origin_out,71,positive,0.0584168973653391,crosses zero
+BIHS,v1_interval,full_64,household_grouped_5fold,1857,positive,0.1081285793200179,positive
+BIHS,v1_interval,interdistrict_63,household_grouped_5fold,1208,positive,0.1083769466895048,positive
+BIHS,v1_interval,full_64,leave_one_origin_out,1857,positive,0.1006656771644918,positive
+BIHS,v1_interval,interdistrict_63,leave_one_origin_out,1208,positive,0.1067658907800368,positive
+BIHS,v1_interval,full_64,wave_holdout_r3,1383,positive,0.0939151110524219,not computed
+BIHS,v1_interval,interdistrict_63,wave_holdout_r3,842,positive,0.1120744374579754,not computed

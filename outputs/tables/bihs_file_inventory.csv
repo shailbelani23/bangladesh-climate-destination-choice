@@ -1,0 +1,15 @@
+file_tag,file,rows,columns,wave,module_type,household_key,unique_households,person_keys
+w1_a,data/raw/bihs/wave1_2011_12/001_mod_a_male.dta,6503,39,w1,household geography,a01,6503,
+w1_b1,data/raw/bihs/wave1_2011_12/003_mod_b1_male.dta,27285,15,w1,person roster,a01,6503,a01+mid
+w1_t1,data/raw/bihs/wave1_2011_12/038_mod_t1_male.dta,4897,13,w1,household shocks,a01,3527,
+w1_v1,data/raw/bihs/wave1_2011_12/041_mod_v1_male.dta,6828,17,w1,current migrants,a01,6503,
+w2_a,data/raw/bihs/wave2_2015/001_r2_mod_a_male.dta,6715,28,w2,household geography,a01,6715,
+w2_b1,data/raw/bihs/wave2_2015/003_r2_male_mod_b1.dta,34297,24,w2,person roster,a01,7036,a01+mid
+w2_b4,data/raw/bihs/wave2_2015/007_r2_mod_b4_male.dta,6436,11,w2,household relocation history,a01,6436,
+w2_t1,data/raw/bihs/wave2_2015/050_r2_mod_t1_male.dta,7047,14,w2,household shocks,a01,6436,
+w2_v1,data/raw/bihs/wave2_2015/053_r2_mod_v1_male.dta,6536,21,w2,current migrants,a01,6436,a01+mid
+w3_a,data/raw/bihs/wave3_2018_19/009_bihs_r3_male_mod_a.dta,6011,59,w3,household geography,a01,6011,
+w3_b1,data/raw/bihs/wave3_2018_19/010_bihs_r3_male_mod_b1.dta,32332,45,w3,person roster,a01,5605,a01+mid
+w3_t1b,data/raw/bihs/wave3_2018_19/067_bihs_r3_male_mod_t1b.dta,6728,21,w3,household shocks,a01,5605,
+w3_t1c,data/raw/bihs/wave3_2018_19/068_bihs_r3_male_mod_t1c.dta,5605,12,w3,severe-disaster summary,a01,5605,
+w3_v1,data/raw/bihs/wave3_2018_19/072_bihs_r3_male_mod_v1.dta,5994,27,w3,current migrants,a01,5605,a01+mid_v1

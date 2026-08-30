@@ -1,0 +1,83 @@
+<div id="climate-evidence-explorer">
+  <h2>Where does GIS add predictive value?</h2>
+  <div class="viz-controls" aria-label="Evidence filters">
+    <label class="form-label">Validation
+      <select class="form-select" id="cee-validation">
+        <option value="household_grouped_5fold">Household-grouped</option>
+        <option value="leave_one_origin_out">Unseen origin</option>
+        <option value="wave_holdout_r3">Later wave</option>
+      </select>
+    </label>
+    <label class="form-label">Choice question
+      <select class="form-select" id="cee-universe">
+        <option value="full_64">Stay or move, then where?</option>
+        <option value="interdistrict_63">Given an interdistrict move, where?</option>
+      </select>
+    </label>
+  </div>
+  <div id="cee-chart"></div>
+  <div class="text-small text-muted" id="cee-note" aria-live="polite"></div>
+</div>
+<style>
+#climate-evidence-explorer { width:100%; color:var(--foreground); }
+#climate-evidence-explorer #cee-chart { width:100%; min-height:360px; }
+#climate-evidence-explorer .cee-label { fill:var(--foreground); font-size:12px; }
+#climate-evidence-explorer .cee-axis { fill:var(--muted-foreground); font-size:12px; }
+#climate-evidence-explorer .cee-grid { stroke:var(--border); stroke-width:1; }
+#climate-evidence-explorer .cee-zero { stroke:var(--foreground); stroke-width:1.5; }
+#climate-evidence-explorer .cee-ci { stroke-width:4; }
+#climate-evidence-explorer .cee-mark { stroke:var(--background); stroke-width:2; }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script>
+(() => {
+  const root = document.getElementById('climate-evidence-explorer');
+  const validation = root.querySelector('#cee-validation');
+  const universe = root.querySelector('#cee-universe');
+  const chart = root.querySelector('#cee-chart');
+  const note = root.querySelector('#cee-note');
+  const data = [{"dataset":"BEMP","sample_label":"BEMP shock-linked household relocations","candidate_universe":"full_64","validation_scheme":"household_grouped_5fold","n_events_evaluated":184,"log_loss_improvement_vs_gravity":0.1080809236,"cluster_bootstrap_ci_low":0.0227004216,"cluster_bootstrap_ci_high":0.1888765883},{"dataset":"BEMP","sample_label":"BEMP shock-linked household relocations","candidate_universe":"interdistrict_63","validation_scheme":"household_grouped_5fold","n_events_evaluated":71,"log_loss_improvement_vs_gravity":0.3269330806,"cluster_bootstrap_ci_low":-0.0010756491,"cluster_bootstrap_ci_high":0.6342919913},{"dataset":"BEMP","sample_label":"BEMP shock-linked household relocations","candidate_universe":"full_64","validation_scheme":"leave_one_origin_out","n_events_evaluated":184,"log_loss_improvement_vs_gravity":-0.1265052168,"cluster_bootstrap_ci_low":null,"cluster_bootstrap_ci_high":null},{"dataset":"BEMP","sample_label":"BEMP shock-linked household relocations","candidate_universe":"interdistrict_63","validation_scheme":"leave_one_origin_out","n_events_evaluated":71,"log_loss_improvement_vs_gravity":0.2236388835,"cluster_bootstrap_ci_low":null,"cluster_bootstrap_ci_high":null},{"dataset":"BEMP","sample_label":"BEMP all household relocations","candidate_universe":"full_64","validation_scheme":"household_grouped_5fold","n_events_evaluated":264,"log_loss_improvement_vs_gravity":0.0952851157,"cluster_bootstrap_ci_low":0.0187277629,"cluster_bootstrap_ci_high":0.1697015725},{"dataset":"BEMP","sample_label":"BEMP all household relocations","candidate_universe":"interdistrict_63","validation_scheme":"household_grouped_5fold","n_events_evaluated":107,"log_loss_improvement_vs_gravity":0.2945548374,"cluster_bootstrap_ci_low":-0.0002425615,"cluster_bootstrap_ci_high":0.55816471},{"dataset":"BEMP","sample_label":"BEMP all household relocations","candidate_universe":"full_64","validation_scheme":"leave_one_origin_out","n_events_evaluated":264,"log_loss_improvement_vs_gravity":-0.278338247,"cluster_bootstrap_ci_low":null,"cluster_bootstrap_ci_high":null},{"dataset":"BEMP","sample_label":"BEMP all household relocations","candidate_universe":"interdistrict_63","validation_scheme":"leave_one_origin_out","n_events_evaluated":107,"log_loss_improvement_vs_gravity":0.2764831724,"cluster_bootstrap_ci_low":null,"cluster_bootstrap_ci_high":null},{"dataset":"BIHS","sample_label":"BIHS all household relocations","candidate_universe":"full_64","validation_scheme":"household_grouped_5fold","n_events_evaluated":526,"log_loss_improvement_vs_gravity":0.057764672,"cluster_bootstrap_ci_low":0.0296882927,"cluster_bootstrap_ci_high":0.0878730515},{"dataset":"BIHS","sample_label":"BIHS all household relocations","candidate_universe":"interdistrict_63","validation_scheme":"household_grouped_5fold","n_events_evaluated":236,"log_loss_improvement_vs_gravity":0.1157410672,"cluster_bootstrap_ci_low":0.0563197236,"cluster_bootstrap_ci_high":0.1790650758},{"dataset":"BIHS","sample_label":"BIHS all household relocations","candidate_universe":"full_64","validation_scheme":"leave_one_origin_out","n_events_evaluated":526,"log_loss_improvement_vs_gravity":0.0272763461,"cluster_bootstrap_ci_low":-0.0034120149,"cluster_bootstrap_ci_high":0.059003309},{"dataset":"BIHS","sample_label":"BIHS all household relocations","candidate_universe":"interdistrict_63","validation_scheme":"leave_one_origin_out","n_events_evaluated":236,"log_loss_improvement_vs_gravity":0.0822663442,"cluster_bootstrap_ci_low":0.0201427162,"cluster_bootstrap_ci_high":0.1463165728},{"dataset":"BIHS","sample_label":"BIHS river-erosion household relocations","candidate_universe":"full_64","validation_scheme":"household_grouped_5fold","n_events_evaluated":123,"log_loss_improvement_vs_gravity":0.0980001497,"cluster_bootstrap_ci_low":0.0276147706,"cluster_bootstrap_ci_high":0.1627449731},{"dataset":"BIHS","sample_label":"BIHS river-erosion household relocations","candidate_universe":"interdistrict_63","validation_scheme":"household_grouped_5fold","n_events_evaluated":71,"log_loss_improvement_vs_gravity":0.1822041733,"cluster_bootstrap_ci_low":0.0760706843,"cluster_bootstrap_ci_high":0.2871614523},{"dataset":"BIHS","sample_label":"BIHS river-erosion household relocations","candidate_universe":"full_64","validation_scheme":"leave_one_origin_out","n_events_evaluated":123,"log_loss_improvement_vs_gravity":-0.0157866926,"cluster_bootstrap_ci_low":-0.0864948209,"cluster_bootstrap_ci_high":0.045269512},{"dataset":"BIHS","sample_label":"BIHS river-erosion household relocations","candidate_universe":"interdistrict_63","validation_scheme":"leave_one_origin_out","n_events_evaluated":71,"log_loss_improvement_vs_gravity":0.0584168974,"cluster_bootstrap_ci_low":-0.0344493861,"cluster_bootstrap_ci_high":0.1396224168},{"dataset":"BIHS","sample_label":"BIHS interval-specific current migrants","candidate_universe":"full_64","validation_scheme":"household_grouped_5fold","n_events_evaluated":1857,"log_loss_improvement_vs_gravity":0.1081285793,"cluster_bootstrap_ci_low":0.0816724579,"cluster_bootstrap_ci_high":0.1350387357},{"dataset":"BIHS","sample_label":"BIHS interval-specific current migrants","candidate_universe":"interdistrict_63","validation_scheme":"household_grouped_5fold","n_events_evaluated":1208,"log_loss_improvement_vs_gravity":0.1083769467,"cluster_bootstrap_ci_low":0.0727483721,"cluster_bootstrap_ci_high":0.1451480639},{"dataset":"BIHS","sample_label":"BIHS interval-specific current migrants","candidate_universe":"full_64","validation_scheme":"leave_one_origin_out","n_events_evaluated":1857,"log_loss_improvement_vs_gravity":0.1006656772,"cluster_bootstrap_ci_low":0.0738304454,"cluster_bootstrap_ci_high":0.1282185792},{"dataset":"BIHS","sample_label":"BIHS interval-specific current migrants","candidate_universe":"interdistrict_63","validation_scheme":"leave_one_origin_out","n_events_evaluated":1208,"log_loss_improvement_vs_gravity":0.1067658908,"cluster_bootstrap_ci_low":0.0730778693,"cluster_bootstrap_ci_high":0.1442708476},{"dataset":"BIHS","sample_label":"BIHS interval-specific current migrants","candidate_universe":"full_64","validation_scheme":"wave_holdout_r3","n_events_evaluated":1383,"log_loss_improvement_vs_gravity":0.0939151111,"cluster_bootstrap_ci_low":null,"cluster_bootstrap_ci_high":null},{"dataset":"BIHS","sample_label":"BIHS interval-specific current migrants","candidate_universe":"interdistrict_63","validation_scheme":"wave_holdout_r3","n_events_evaluated":842,"log_loss_improvement_vs_gravity":0.1120744375,"cluster_bootstrap_ci_low":null,"cluster_bootstrap_ci_high":null}];
+  const label = d => d.sample_label.replace('BEMP ', '').replace('BIHS ', '');
+  const color = d => d.dataset === 'BIHS' ? 'var(--viz-series-1)' : 'var(--viz-series-2)';
+  function draw() {
+    const rows = data.filter(d => d.validation_scheme === validation.value && d.candidate_universe === universe.value);
+    chart.replaceChildren();
+    const width = Math.max(340, chart.getBoundingClientRect().width || 736);
+    const height = Math.max(310, 88 + rows.length * 58);
+    const margin = {top:32,right:54,bottom:58,left:Math.min(285, Math.max(170,width*.36))};
+    const svg = d3.select(chart).append('svg').attr('viewBox',`0 0 ${width} ${height}`)
+      .attr('role','img').attr('aria-label','GIS log-loss improvement over gravity by dataset and sample');
+    svg.append('title').text('GIS improvement over gravity');
+    svg.append('desc').text('Positive values mean the GIS model predicts observed destinations better than gravity.');
+    const extent = d3.extent(rows.flatMap(d => [d.cluster_bootstrap_ci_low ?? d.log_loss_improvement_vs_gravity, d.cluster_bootstrap_ci_high ?? d.log_loss_improvement_vs_gravity,0]));
+    const pad = Math.max(.04,(extent[1]-extent[0])*.16);
+    const x = d3.scaleLinear().domain([extent[0]-pad,extent[1]+pad]).nice().range([margin.left,width-margin.right]);
+    const y = d3.scaleBand().domain(rows.map(label)).range([margin.top,height-margin.bottom]).padding(.42);
+    svg.append('g').selectAll('line').data(x.ticks(width < 500 ? 4 : 7)).join('line')
+      .attr('class',d => Math.abs(d)<1e-12?'cee-zero':'cee-grid').attr('x1',x).attr('x2',x)
+      .attr('y1',margin.top).attr('y2',height-margin.bottom);
+    svg.append('g').selectAll('text').data(rows).join('text').attr('class','cee-label')
+      .attr('x',margin.left-12).attr('y',d=>y(label(d))+y.bandwidth()/2+4).attr('text-anchor','end').text(label);
+    svg.append('g').selectAll('line').data(rows.filter(d=>d.cluster_bootstrap_ci_low!==null)).join('line')
+      .attr('class','cee-ci').attr('stroke',color).attr('x1',d=>x(d.cluster_bootstrap_ci_low))
+      .attr('x2',d=>x(d.cluster_bootstrap_ci_high)).attr('y1',d=>y(label(d))+y.bandwidth()/2)
+      .attr('y2',d=>y(label(d))+y.bandwidth()/2);
+    svg.append('g').selectAll('circle').data(rows).join('circle').attr('class','cee-mark')
+      .attr('fill',color).attr('cx',d=>x(d.log_loss_improvement_vs_gravity))
+      .attr('cy',d=>y(label(d))+y.bandwidth()/2).attr('r',7)
+      .attr('data-tooltip',d=>`${label(d)}: gain ${d.log_loss_improvement_vs_gravity.toFixed(3)}; ${d.n_events_evaluated.toLocaleString()} events`);
+    const axis = d3.axisBottom(x).ticks(width < 500 ? 4 : 7).tickFormat(d3.format('.2f'));
+    svg.append('g').attr('transform',`translate(0,${height-margin.bottom})`).call(axis)
+      .call(g=>g.selectAll('text').attr('class','cee-axis')).call(g=>g.select('.domain').attr('stroke','var(--border)'));
+    svg.append('text').attr('class','cee-label').attr('data-axis','x').attr('x',(margin.left+width-margin.right)/2)
+      .attr('y',height-10).attr('text-anchor','middle').text('Log-loss improvement over gravity');
+    if (rows.length === 0) {
+      svg.append('text').attr('class','cee-label').attr('x',width/2).attr('y',height/2).attr('text-anchor','middle').text('No comparable sample for this validation.');
+    }
+    const positive = rows.filter(d=>d.log_loss_improvement_vs_gravity>0).length;
+    note.textContent = rows.length ? `${positive} of ${rows.length} estimates favor GIS. Whiskers show clustered 95% intervals when available.` : '';
+  }
+  validation.addEventListener('change',draw); universe.addEventListener('change',draw);
+  new ResizeObserver(draw).observe(chart); draw();
+})();
+</script>

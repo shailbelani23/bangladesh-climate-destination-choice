@@ -1,21 +1,23 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Climate mobility evidence explorer</title><style>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Test the destination models</title><style>
 :root{--background:#f7f9fb;--foreground:#17324f;--muted-foreground:#61758d;--border:#cfd9e3;--viz-series-1:#0b8793;--viz-series-2:#d96b2b;--destructive:#cf553b;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color-scheme:light}
-*{box-sizing:border-box}body{margin:0;background:var(--background);color:var(--foreground);line-height:1.55}main{width:min(1040px,calc(100% - 32px));margin:0 auto;padding:40px 0 70px}h1{font-size:clamp(2.1rem,6vw,4.8rem);line-height:.98;letter-spacing:-.045em;margin:.25em 0}h2{font-size:clamp(1.45rem,3vw,2.25rem);line-height:1.12;letter-spacing:-.025em;margin:1.7em 0 .6em}p{font-size:1.05rem;max-width:72ch}.kicker{color:#d96b2b;font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.lede{font-size:clamp(1.18rem,2vw,1.5rem);max-width:62ch;color:#334e68}.metric{font-size:clamp(2.2rem,7vw,5.5rem);font-weight:800;letter-spacing:-.05em;color:#0b8793;line-height:1}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}.figure{margin:34px 0}.figure img{width:100%;height:auto;border:1px solid var(--border);background:white}.caption{font-size:.9rem;color:var(--muted-foreground);max-width:86ch}.viz-controls{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0}.form-label{display:grid;gap:5px;font-size:.83rem;font-weight:700}.form-select,.btn{font:inherit;border:1px solid var(--border);background:white;color:var(--foreground);border-radius:7px;padding:8px 11px}.btn{cursor:pointer}.btn-primary{background:#0b8793;color:white;border-color:#0b8793}.card{background:white;border:1px solid var(--border);border-radius:8px;padding:16px;margin-top:12px}.text-small{font-size:.88rem}.text-muted{color:var(--muted-foreground)}nav{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:34px}nav a,a{color:#096a74;text-underline-offset:3px}.story-step{border-left:4px solid #d96b2b;padding-left:18px;margin:24px 0}.note{background:#eaf3f4;border-left:4px solid #0b8793;padding:16px 18px;margin:28px 0;max-width:76ch}footer{border-top:1px solid var(--border);margin-top:50px;padding-top:20px;color:var(--muted-foreground);font-size:.9rem}@media(max-width:760px){.grid{grid-template-columns:1fr}main{width:min(100% - 22px,1040px);padding-top:24px}}
-</style></head><body><main><nav><a href="index.html">Back to the story</a></nav><div id="climate-evidence-explorer">
-  <h2>Where does GIS add predictive value?</h2>
+*{box-sizing:border-box}body{margin:0;background:var(--background);color:var(--foreground);line-height:1.55}main{width:min(1040px,calc(100% - 32px));margin:0 auto;padding:40px 0 70px}h1{font-size:clamp(2.1rem,6vw,4.8rem);line-height:.98;letter-spacing:-.045em;margin:.25em 0}h2{font-size:clamp(1.45rem,3vw,2.25rem);line-height:1.12;letter-spacing:-.025em;margin:1.7em 0 .6em}p{font-size:1.05rem;max-width:72ch}.kicker{color:#d96b2b;font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.lede{font-size:clamp(1.18rem,2vw,1.5rem);max-width:62ch;color:#334e68}.abstract{max-width:78ch;background:white;border-top:4px solid #0b8793;border-bottom:1px solid var(--border);padding:22px 24px;margin:30px 0 38px}.abstract h2{font-size:.82rem;line-height:1;letter-spacing:.13em;text-transform:uppercase;color:#096a74;margin:0 0 12px}.abstract p{margin:0;font-size:1.03rem}.metric{font-size:clamp(2.2rem,7vw,5.5rem);font-weight:800;letter-spacing:-.05em;color:#0b8793;line-height:1}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}.figure{margin:34px 0}.figure img{width:100%;height:auto;border:1px solid var(--border);background:white}.caption{font-size:.9rem;color:var(--muted-foreground);max-width:86ch}.viz-controls{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}.form-label{display:grid;gap:5px;font-size:.83rem;font-weight:700}.form-select,.btn{font:inherit;border:1px solid var(--border);background:white;color:var(--foreground);border-radius:7px;padding:8px 11px}.btn{cursor:pointer}.btn-primary{background:#0b8793;color:white;border-color:#0b8793}.card{background:white;border:1px solid var(--border);border-radius:8px;padding:16px;margin-top:12px}.text-small{font-size:.88rem}.text-muted{color:var(--muted-foreground)}nav{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:34px}nav a,a{color:#096a74;text-underline-offset:3px}.story-step{border-left:4px solid #d96b2b;padding-left:18px;margin:24px 0}.note{background:#eaf3f4;border-left:4px solid #0b8793;padding:16px 18px;margin:28px 0;max-width:76ch}footer{border-top:1px solid var(--border);margin-top:50px;padding-top:20px;color:var(--muted-foreground);font-size:.9rem}@media(max-width:760px){.grid{grid-template-columns:1fr}main{width:min(100% - 22px,1040px);padding-top:24px}.abstract{padding:18px}}
+</style></head><body><main><nav><a href="index.html">Return to the main story</a></nav><div id="climate-evidence-explorer">
+  <p class="kicker">Model checks</p>
+  <h1>Does destination geography help on held-out moves?</h1>
+  <p class="lede">Each dot compares two models on moves they did not train on. The baseline uses distance and population. The second model adds flood history, built surface, travel time to a city, and cropland. Positive values mean the second model gives more probability to the destinations people recorded.</p>
   <div class="viz-controls" aria-label="Evidence filters">
-    <label class="form-label">Validation
+    <label class="form-label">Test split
       <select class="form-select" id="cee-validation">
-        <option value="household_grouped_5fold">Household-grouped</option>
-        <option value="leave_one_origin_out">Unseen origin</option>
-        <option value="wave_holdout_r3">Later wave</option>
+        <option value="household_grouped_5fold">New households from represented origins</option>
+        <option value="leave_one_origin_out">Every move from one unseen origin</option>
+        <option value="wave_holdout_r3">Train in 2015, test in 2018–19</option>
       </select>
     </label>
-    <label class="form-label">Choice question
+    <label class="form-label">Candidate set
       <select class="form-select" id="cee-universe">
-        <option value="full_64">Stay or move, then where?</option>
-        <option value="interdistrict_63">Given an interdistrict move, where?</option>
+        <option value="full_64">All 64 districts, including the origin</option>
+        <option value="interdistrict_63">The 63 districts outside the origin</option>
       </select>
     </label>
   </div>
@@ -51,8 +53,8 @@
     const margin = {top:32,right:54,bottom:58,left:Math.min(285, Math.max(170,width*.36))};
     const svg = d3.select(chart).append('svg').attr('viewBox',`0 0 ${width} ${height}`)
       .attr('role','img').attr('aria-label','GIS log-loss improvement over gravity by dataset and sample');
-    svg.append('title').text('GIS improvement over gravity');
-    svg.append('desc').text('Positive values mean the GIS model predicts observed destinations better than gravity.');
+    svg.append('title').text('Held-out improvement from adding district GIS measures');
+    svg.append('desc').text('Positive values mean the GIS model gives more probability to recorded destinations than the distance-and-population model.');
     const extent = d3.extent(rows.flatMap(d => [d.cluster_bootstrap_ci_low ?? d.log_loss_improvement_vs_gravity, d.cluster_bootstrap_ci_high ?? d.log_loss_improvement_vs_gravity,0]));
     const pad = Math.max(.04,(extent[1]-extent[0])*.16);
     const x = d3.scaleLinear().domain([extent[0]-pad,extent[1]+pad]).nice().range([margin.left,width-margin.right]);
@@ -74,12 +76,12 @@
     svg.append('g').attr('transform',`translate(0,${height-margin.bottom})`).call(axis)
       .call(g=>g.selectAll('text').attr('class','cee-axis')).call(g=>g.select('.domain').attr('stroke','var(--border)'));
     svg.append('text').attr('class','cee-label').attr('data-axis','x').attr('x',(margin.left+width-margin.right)/2)
-      .attr('y',height-10).attr('text-anchor','middle').text('Log-loss improvement over gravity');
+      .attr('y',height-10).attr('text-anchor','middle').text('Held-out log-loss improvement over distance + population');
     if (rows.length === 0) {
-      svg.append('text').attr('class','cee-label').attr('x',width/2).attr('y',height/2).attr('text-anchor','middle').text('No comparable sample for this validation.');
+      svg.append('text').attr('class','cee-label').attr('x',width/2).attr('y',height/2).attr('text-anchor','middle').text('This split has no matching sample.');
     }
     const positive = rows.filter(d=>d.log_loss_improvement_vs_gravity>0).length;
-    note.textContent = rows.length ? `${positive} of ${rows.length} estimates favor GIS. Whiskers show clustered 95% intervals when available.` : '';
+    note.textContent = rows.length ? `${positive} of ${rows.length} comparisons give recorded destinations more probability after GIS is added. Lines show 95% household-cluster bootstrap intervals when available.` : '';
   }
   validation.addEventListener('change',draw); universe.addEventListener('change',draw);
   new ResizeObserver(draw).observe(chart); draw();

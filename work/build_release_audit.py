@@ -109,7 +109,11 @@ def main() -> None:
     manuscript = (PUB / "manuscript" / "manuscript.md").read_text(encoding="utf-8")
     claim_sheet = (PUB / "claim_sheet.md").read_text(encoding="utf-8")
     explainer = (PUB / "public_explainer.md").read_text(encoding="utf-8")
-    public_prose = "\n".join([manuscript, claim_sheet, explainer])
+    website = "\n".join(
+        (ROOT / "docs" / name).read_text(encoding="utf-8")
+        for name in ["index.html", "evidence.html", "household.html"]
+    )
+    public_prose = "\n".join([manuscript, claim_sheet, explainer, website])
 
     required_claims = {
         "bemp_main": ["184", "1.630", "1.522", "0.108", "[0.023, 0.189]"],
@@ -124,7 +128,7 @@ def main() -> None:
 
     lower = public_prose.lower()
     hits = [term for term in BANNED if re.search(rf"\b{re.escape(term)}\b", lower)]
-    check(rows, "prose_banned_terms", not hits, "hits=" + ";".join(hits), "publication/*.md")
+    check(rows, "prose_banned_terms", not hits, "hits=" + ";".join(hits), "publication/*.md and docs/*.html")
 
     for doc in [
         PUB / "manuscript" / "bangladesh_climate_destination_choice_manuscript.a11y.json",

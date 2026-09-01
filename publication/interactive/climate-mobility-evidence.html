@@ -1,17 +1,19 @@
 <div id="climate-evidence-explorer">
-  <h2>Where does GIS add predictive value?</h2>
+  <p class="kicker">Model checks</p>
+  <h1>Does destination geography help on held-out moves?</h1>
+  <p class="lede">Each dot compares two models on moves they did not train on. The baseline uses distance and population. The second model adds flood history, built surface, travel time to a city, and cropland. Positive values mean the second model gives more probability to the destinations people recorded.</p>
   <div class="viz-controls" aria-label="Evidence filters">
-    <label class="form-label">Validation
+    <label class="form-label">Test split
       <select class="form-select" id="cee-validation">
-        <option value="household_grouped_5fold">Household-grouped</option>
-        <option value="leave_one_origin_out">Unseen origin</option>
-        <option value="wave_holdout_r3">Later wave</option>
+        <option value="household_grouped_5fold">New households from represented origins</option>
+        <option value="leave_one_origin_out">Every move from one unseen origin</option>
+        <option value="wave_holdout_r3">Train in 2015, test in 2018–19</option>
       </select>
     </label>
-    <label class="form-label">Choice question
+    <label class="form-label">Candidate set
       <select class="form-select" id="cee-universe">
-        <option value="full_64">Stay or move, then where?</option>
-        <option value="interdistrict_63">Given an interdistrict move, where?</option>
+        <option value="full_64">All 64 districts, including the origin</option>
+        <option value="interdistrict_63">The 63 districts outside the origin</option>
       </select>
     </label>
   </div>
@@ -47,8 +49,8 @@
     const margin = {top:32,right:54,bottom:58,left:Math.min(285, Math.max(170,width*.36))};
     const svg = d3.select(chart).append('svg').attr('viewBox',`0 0 ${width} ${height}`)
       .attr('role','img').attr('aria-label','GIS log-loss improvement over gravity by dataset and sample');
-    svg.append('title').text('GIS improvement over gravity');
-    svg.append('desc').text('Positive values mean the GIS model predicts observed destinations better than gravity.');
+    svg.append('title').text('Held-out improvement from adding district GIS measures');
+    svg.append('desc').text('Positive values mean the GIS model gives more probability to recorded destinations than the distance-and-population model.');
     const extent = d3.extent(rows.flatMap(d => [d.cluster_bootstrap_ci_low ?? d.log_loss_improvement_vs_gravity, d.cluster_bootstrap_ci_high ?? d.log_loss_improvement_vs_gravity,0]));
     const pad = Math.max(.04,(extent[1]-extent[0])*.16);
     const x = d3.scaleLinear().domain([extent[0]-pad,extent[1]+pad]).nice().range([margin.left,width-margin.right]);
@@ -70,12 +72,12 @@
     svg.append('g').attr('transform',`translate(0,${height-margin.bottom})`).call(axis)
       .call(g=>g.selectAll('text').attr('class','cee-axis')).call(g=>g.select('.domain').attr('stroke','var(--border)'));
     svg.append('text').attr('class','cee-label').attr('data-axis','x').attr('x',(margin.left+width-margin.right)/2)
-      .attr('y',height-10).attr('text-anchor','middle').text('Log-loss improvement over gravity');
+      .attr('y',height-10).attr('text-anchor','middle').text('Held-out log-loss improvement over distance + population');
     if (rows.length === 0) {
-      svg.append('text').attr('class','cee-label').attr('x',width/2).attr('y',height/2).attr('text-anchor','middle').text('No comparable sample for this validation.');
+      svg.append('text').attr('class','cee-label').attr('x',width/2).attr('y',height/2).attr('text-anchor','middle').text('This split has no matching sample.');
     }
     const positive = rows.filter(d=>d.log_loss_improvement_vs_gravity>0).length;
-    note.textContent = rows.length ? `${positive} of ${rows.length} estimates favor GIS. Whiskers show clustered 95% intervals when available.` : '';
+    note.textContent = rows.length ? `${positive} of ${rows.length} comparisons give recorded destinations more probability after GIS is added. Lines show 95% household-cluster bootstrap intervals when available.` : '';
   }
   validation.addEventListener('change',draw); universe.addEventListener('change',draw);
   new ResizeObserver(draw).observe(chart); draw();

@@ -18,7 +18,7 @@ manuscript_bihs_erosion,PASS,missing=,publication/manuscript/manuscript.md
 manuscript_wide_origin,PASS,missing=,publication/manuscript/manuscript.md
 manuscript_household,PASS,missing=,publication/manuscript/manuscript.md
 manuscript_network,PASS,missing=,publication/manuscript/manuscript.md
-prose_banned_terms,PASS,hits=,publication/*.md
+prose_banned_terms,PASS,hits=,publication/*.md and docs/*.html
 a11y_bangladesh_climate_destination_choice_manuscript.a11y,PASS,zero reported issues,publication/manuscript/bangladesh_climate_destination_choice_manuscript.a11y.json
 a11y_bangladesh_climate_destination_choice_claim_sheet.a11y,PASS,zero reported issues,publication/bangladesh_climate_destination_choice_claim_sheet.a11y.json
 presentation_slide_count,PASS,7,publication/presentation/bangladesh_climate_destination_choice_7_slide_presentation.pptx

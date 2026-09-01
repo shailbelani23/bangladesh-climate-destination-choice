@@ -27,6 +27,7 @@ def main():
         "household.png": ROOT / "outputs/figures/anonymized_household_destination_story.png",
         "forest.png": ROOT / "outputs/figures/cross_dataset_gis_gain_forest.png",
         "transport.png": ROOT / "outputs/figures/validation_transportability_comparison.png",
+        "manuscript.pdf": ROOT / "publication/manuscript/manuscript.pdf",
     }
     for name, source in figures.items():
         shutil.copy2(source, ASSETS / name)
@@ -37,7 +38,7 @@ def main():
     (DOCS / "household.html").write_text(page("One household journey", '<nav><a href="index.html">Back to the story</a></nav>' + household))
 
     body = """
-<nav><a href="#story">Story</a><a href="#finding">Finding</a><a href="household.html">Household explorer</a><a href="evidence.html">Evidence explorer</a><a href="../publication/manuscript/manuscript.pdf">Paper</a></nav>
+<nav><a href="#story">Story</a><a href="#finding">Finding</a><a href="household.html">Household explorer</a><a href="evidence.html">Evidence explorer</a><a href="assets/manuscript.pdf">Paper</a></nav>
 <p class="kicker">Climate mobility in Bangladesh</p>
 <h1>The river took their land.<br>Where did they go?</h1>
 <p class="lede">An anonymized household moved from Faridpur to Manikganj after river erosion. This project asks why that destination became the observed choice among 64 districts.</p>

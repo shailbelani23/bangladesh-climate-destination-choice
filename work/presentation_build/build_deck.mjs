@@ -91,7 +91,7 @@ async function main() {
     text(s, "cover-kicker", "BANGLADESH • CLIMATE MOBILITY", 86, 51, 470, 28, 14, { bold: true, color: C.blue });
     text(s, "cover-title", "Where do climate-affected households go?", 52, 178, 560, 210, 54, { bold: true });
     text(s, "cover-subtitle", "Revealed destination choice after flood and river erosion", 52, 414, 540, 72, 23, { color: C.muted });
-    text(s, "cover-author", "Shail Belani  •  Northwestern University\nGlobal Poverty Research Lab undergraduate researcher", 52, 574, 560, 58, 16, { color: C.ink });
+    text(s, "cover-author", "Shail Belani  •  Undergraduate Researcher\nNorthwestern University", 52, 574, 560, 58, 16, { color: C.ink });
     await addImage(s, "cover-map", path.join(ROOT, "outputs/figures/anonymized_household_destination_story.png"), { left: 644, top: 44, width: 584, height: 590 }, "Map and probability comparison for an anonymized household that moved from Faridpur to Manikganj after river erosion.");
     text(s, "cover-number", "01", 1178, 680, 50, 18, 11, { align: "right", color: C.muted });
     notes(s, "Open with the household, not the model. One surveyed household lost land and a homestead to river erosion, then moved from Faridpur to Manikganj in 2010. The study asks why that district became the destination.", [
@@ -146,48 +146,49 @@ async function main() {
       text(s, `method-label-${i}`, labels[i], cols[i] + 26, 247, 296, 60, 23, { bold: true });
       text(s, `method-copy-${i}`, copy[i], cols[i] + 26, 326, 296, 150, 18, { color: C.muted });
     }
-    text(s, "method-footer", "Held-out origin groups prevent the model from memorizing local origin patterns.", 52, 600, 960, 36, 18, { bold: true, color: C.ink });
-    notes(s, "The comparison is between a transparent distance-population baseline and a GIS-expanded conditional logit. Main estimates use grouped cross-validation by origin. The outcome is observed district choice conditional on moving, not whether a household moves.", [
+    text(s, "method-footer", "Households stay in one fold; harder tests also withhold whole origins and a later wave.", 52, 600, 960, 36, 18, { bold: true, color: C.ink });
+    notes(s, "The comparison is between a transparent distance-population baseline and a GIS-expanded conditional logit. Main estimates group validation folds by household. Separate origin-held-out and later-wave tests ask whether the destination utility travels. The outcome is observed district choice conditional on moving, not whether a household moves.", [
       "Local methods and frozen claims: publication/manuscript/manuscript.md",
       "Radiation model: https://doi.org/10.1038/nature10856",
       "Global Human Settlement Layer: https://doi.org/10.2760/098587",
     ]);
   }
 
-  // 4. Main evidence: adapted from Codex Grid slide 21 (chart + callouts).
+  // 4. Independent replication and transport: adapted from Codex Grid slide 21.
   {
     const s = p.slides.add();
     s.background.fill = C.white;
-    header(s, "GIS raises held-out destination probability in both surveys", "Main result", 4);
-    await addImage(s, "forest-plot", path.join(ROOT, "outputs/figures/cross_dataset_gis_gain_forest.png"), { left: 52, top: 178, width: 760, height: 450 }, "Forest plot of the gain in observed-destination probability from adding GIS variables to the gravity baseline across BEMP and BIHS samples.");
+    header(s, "The BIHS result survives unseen origins and a later wave", "Independent replication", 4);
+    await addImage(s, "transport-plot", path.join(ROOT, "outputs/figures/validation_transportability_comparison.png"), { left: 52, top: 178, width: 760, height: 450 }, "Comparison of grouped, leave-one-origin-out, and later-wave log-loss gains in BIHS and climate-specific samples.");
     box(s, "result-rail", 850, 190, 378, 390, C.panel);
-    text(s, "result-stat-1", "+10.8 pp", 880, 232, 320, 62, 38, { bold: true, color: C.blue });
-    text(s, "result-desc-1", "BEMP shock-linked moves\n184 events", 880, 302, 310, 66, 18, { color: C.muted });
+    text(s, "result-stat-1", "+0.101", 880, 232, 320, 62, 38, { bold: true, color: C.blue });
+    text(s, "result-desc-1", "Leave one origin out\n1,857 BIHS migrants", 880, 302, 310, 66, 18, { color: C.muted });
     box(s, "result-rule", 880, 390, 286, 2, C.rule);
-    text(s, "result-stat-2", "+9.8 pp", 880, 422, 320, 62, 38, { bold: true, color: C.green });
-    text(s, "result-desc-2", "BIHS erosion-linked moves\n123 events", 880, 492, 310, 66, 18, { color: C.muted });
-    text(s, "result-note", "Percentage-point gains in the probability assigned to the destination actually chosen.", 850, 603, 378, 52, 14, { color: C.muted });
-    notes(s, "Lead with replication. The main BEMP and BIHS erosion-linked estimates are close: 10.8 and 9.8 percentage points. Confidence intervals are shown in the figure. The all-moves and baseline-migrant samples widen origin coverage and remain positive.", [
-      "Local frozen summary: outputs/tables/cross_dataset_replication_summary.csv",
-      "BEMP public-use data: https://doi.org/10.5281/zenodo.18229498",
+    text(s, "result-stat-2", "+0.094", 880, 422, 320, 62, 38, { bold: true, color: C.green });
+    text(s, "result-desc-2", "Train 2015, test 2018–19\n1,383 later-wave migrants", 880, 492, 310, 66, 18, { color: C.muted });
+    text(s, "result-note", "Held-out log-loss improvement over fitted gravity. Positive values favor GIS.", 850, 603, 378, 52, 14, { color: C.muted });
+    notes(s, "Lead with the independent BIHS transport result. The sample covers all 64 origin districts. GIS retains a 0.101 log-loss gain when each test origin is removed from training and a 0.094 gain when a 2015 model predicts 2018–19 migrants. These are not climate-labeled migrants; they test geographic and temporal portability of the destination specification.", [
+      "Local validation output: outputs/tables/bihs_replication_validation.csv",
       "BIHS public-use data: https://doi.org/10.7910/DVN/OR6MHT",
     ]);
   }
 
-  // 5. Validation: adapted from Codex Grid slide 22 (chart + interpretation).
+  // 5. Climate-specific replication: adapted from Codex Grid slide 22.
   {
     const s = p.slides.add();
     s.background.fill = C.white;
-    header(s, "Destination ranking travels; stay-versus-leave does not", "External validation", 5);
-    await addImage(s, "transport-plot", path.join(ROOT, "outputs/figures/validation_transportability_comparison.png"), { left: 52, top: 180, width: 710, height: 430 }, "Comparison of grouped and leave-one-origin-out validation gains showing stable positive destination-ranking results and weaker migration-incidence transport.");
-    text(s, "validation-head", "What survives the harder test", 820, 205, 360, 42, 23, { bold: true });
+    header(s, "Two climate samples reproduce the grouped gain", "Climate-specific evidence", 5);
+    await addImage(s, "forest-plot", path.join(ROOT, "outputs/figures/cross_dataset_gis_gain_forest.png"), { left: 52, top: 180, width: 710, height: 430 }, "Forest plot of held-out log-loss gains from adding GIS variables to fitted gravity across BEMP and BIHS samples.");
+    text(s, "validation-head", "Same model, different surveys", 820, 205, 360, 42, 23, { bold: true });
     box(s, "validation-blue", 820, 275, 14, 105, C.blue);
-    text(s, "validation-good", "Among people who moved, GIS features continue to improve destination ranking across many held-out origins.", 858, 270, 330, 120, 19, { color: C.ink });
+    text(s, "validation-good", "BIHS erosion moves: +0.098 across 123 relocations from 29 origins.", 858, 270, 330, 120, 19, { color: C.ink });
     box(s, "validation-orange", 820, 435, 14, 105, C.orange);
-    text(s, "validation-caution", "A model trained on one origin does not reliably predict who leaves another origin. That is a different scientific problem.", 858, 430, 330, 120, 19, { color: C.ink });
-    notes(s, "The leave-one-origin-out check separates two questions. Destination ranking retains positive gains in the wide BIHS sample. Migration incidence is origin-specific and should not be presented as a nationally portable forecast.", [
-      "Local validation output: outputs/tables/bihs_replication_validation.csv",
-      "Local figure: outputs/figures/validation_transportability_comparison.png",
+    text(s, "validation-caution", "BEMP shock-linked moves: +0.108 across 184 later relocations from 7 origins.", 858, 430, 330, 120, 19, { color: C.ink });
+    notes(s, "The climate-specific samples use the same destination outcome and fixed feature set. BIHS independently identifies erosion-related land loss as the move reason; BEMP provides the stronger sequence from a recorded shock to a later relocation. Prior BEMP research asks whether shocks change migration likelihood, type, or distance. This project conditions on a move and predicts its district.", [
+      "Local frozen summary: outputs/tables/cross_dataset_replication_summary.csv",
+      "BEMP public-use data: https://doi.org/10.5281/zenodo.18229498",
+      "BIHS public-use data: https://doi.org/10.7910/DVN/OR6MHT",
+      "Existing BEMP incidence paper: https://doi.org/10.1007/s11111-025-00478-7",
     ]);
   }
 
@@ -220,7 +221,7 @@ async function main() {
     const s = p.slides.add();
     s.background.fill = C.ink;
     text(s, "close-kicker", "WHAT WE NOW KNOW", 52, 47, 400, 28, 14, { bold: true, color: "#73C7F3" });
-    text(s, "close-title", "A climate shock changes where a family must choose from.", 52, 162, 1040, 142, 50, { bold: true, color: C.white });
+    text(s, "close-title", "After a climate-linked move, destination geography still matters.", 52, 162, 1040, 142, 50, { bold: true, color: C.white });
     text(s, "close-body", "Distance matters, but it is not enough. Across two public household surveys, the geography of candidate destinations improves prediction of where movers actually go.", 52, 351, 945, 116, 24, { color: "#D6DBE2" });
     box(s, "close-rule", 52, 522, 1176, 2, "#5A6572");
     text(s, "close-action", "Next: measure pre-move social ties, housing, land, and jobs for every plausible destination.", 52, 558, 1070, 72, 23, { bold: true, color: "#73C7F3" });

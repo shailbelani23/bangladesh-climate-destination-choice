@@ -15,7 +15,7 @@ RAW = ROOT / "data" / "raw" / "bihs"
 GUESTBOOK_EMAIL = os.environ["BIHS_GUESTBOOK_EMAIL"]
 GUESTBOOK_INSTITUTION = os.environ.get("BIHS_GUESTBOOK_INSTITUTION", "Northwestern University")
 GUESTBOOK_POSITION = os.environ.get(
-    "BIHS_GUESTBOOK_POSITION", "Undergraduate Researcher, Global Poverty Research Lab"
+    "BIHS_GUESTBOOK_POSITION", "Undergraduate Researcher, Northwestern University"
 )
 
 selection = {

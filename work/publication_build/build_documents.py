@@ -291,10 +291,9 @@ def build_manuscript():
     set_font(r, name="Aptos Display", size=16, color=TEAL)
     for text, bold in [
         ("Shail Belani", True),
-        ("Northwestern University", False),
-        ("Undergraduate Researcher, Global Poverty Research Lab", False),
+        ("Northwestern University, Evanston, Illinois, USA", False),
         ("shailbelani2027@u.northwestern.edu", False),
-        ("August 30, 2026", False),
+        ("September 3, 2026", False),
     ]:
         p = doc.add_paragraph()
         p.paragraph_format.space_after = Pt(1)
@@ -352,7 +351,9 @@ def build_manuscript():
             i += 1
             continue
         if line.startswith("## "):
-            doc.add_heading(line[3:], level=1)
+            heading = doc.add_heading(line[3:], level=1)
+            if line == "## 9. Statements and declarations":
+                heading.paragraph_format.page_break_before = True
             i += 1
             continue
         if line.startswith("### "):
@@ -415,8 +416,9 @@ def build_manuscript():
         if in_refs and p.style.name == "Normal":
             p.paragraph_format.left_indent = Inches(0.25)
             p.paragraph_format.first_line_indent = Inches(-0.25)
+            p.paragraph_format.space_after = Pt(2)
             for run in p.runs:
-                run.font.size = Pt(9)
+                run.font.size = Pt(8)
 
     doc.core_properties.title = "Where Do Climate-Affected Households Go?"
     doc.core_properties.subject = "Revealed district choice in Bangladesh"
@@ -441,10 +443,11 @@ def build_claim_sheet():
     set_font(r, size=11.5, bold=True, color=TEAL)
     p = doc.add_paragraph()
     p.paragraph_format.space_after = Pt(7)
-    add_inline(p, "Shail Belani | Northwestern University | Global Poverty Research Lab", size=8.5)
+    add_inline(p, "Shail Belani | Undergraduate Researcher, Northwestern University", size=8.5)
     sections = [
         ("Main claim", "Across two independent Bangladesh surveys, four pre-specified district GIS measures improve out-of-sample destination probabilities relative to the same fitted gravity model. The evidence supports a predictive claim about where observed movers go. It does not identify a causal effect of any GIS characteristic on migration."),
-        ("Primary estimates", "BEMP shock-linked moves: 184 events, gain 0.108 [0.023, 0.189]. BIHS erosion moves: 123 events, gain 0.098 [0.028, 0.163]. BIHS national migrants: 1,857 events, gain 0.108 [0.082, 0.135]. Positive gain equals gravity log loss minus GIS log loss."),
+        ("Different question", "Prior BEMP research estimates whether shocks change migration likelihood, type, and distance. This project conditions on an observed move and predicts the destination district. BIHS supplies the independent replication and main transport tests; BEMP supplies stronger shock timing."),
+        ("Primary estimates", "BIHS national migrants: 1,857 events, gain 0.108 [0.082, 0.135]. BIHS erosion moves: 123 events, gain 0.098 [0.028, 0.163]. BEMP shock-linked moves: 184 events, gain 0.108 [0.023, 0.189]. Positive gain equals gravity log loss minus GIS log loss."),
         ("Generalization boundary", "The national BIHS model transfers to origins omitted from training: full-choice gain 0.101 [0.074, 0.128], interdistrict gain 0.107 [0.073, 0.144]. BIHS erosion moves do not support the same full-choice transfer: -0.016 [-0.086, 0.045]. Their interdistrict gain remains positive at 0.058 [-0.034, 0.140]. BEMP shows the same directional split."),
         ("Human illustration", "An anonymized household head reported moving from Faridpur to Manikganj in 2010 after erosion-related land loss. Gravity assigned Manikganj 7.0% probability and rank 6 of 64. GIS assigned 13.7% and rank 2. The case illustrates prediction; it does not reveal private reasoning."),
         ("Permitted language", "Use predicts, improves held-out probability, is associated with, and transfers across held-out origins. Do not use causes, proves preference, climate refugee, nationally representative climate displacement, or village-level claims. Public origins and destinations are districts."),

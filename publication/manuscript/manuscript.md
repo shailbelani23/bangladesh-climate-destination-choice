@@ -2,16 +2,15 @@
 
 ## Revealed District Choice in Bangladesh
 
-**Shail Belani**  
-Northwestern University  
-Undergraduate Researcher, Global Poverty Research Lab  
+**Shail Belani**<br>
+Northwestern University, Evanston, Illinois, USA<br>
 shailbelani2027@u.northwestern.edu
 
-**Draft date:** August 30, 2026
+**Draft date:** September 3, 2026
 
 ## Abstract
 
-Research on climate mobility often asks whether environmental shocks make people move. This paper asks where people go after a move occurs. I construct revealed district-choice events from two independent Bangladesh surveys: the Bangladesh Environmental Mobility Panel (BEMP), which followed households exposed to riverbank erosion and flooding along the Jamuna River, and the nationally representative rural Bangladesh Integrated Household Survey (BIHS). Each observed move is compared with the same 64 candidate districts. A fitted gravity model uses destination population and origin-destination distance. A pre-specified GIS model adds four district attributes: historical flood exposure, built surface, travel time to cities, and cropland. Household-grouped out-of-sample tests show that GIS improves the probability assigned to observed destinations. The mean log-loss gain is 0.108 for 184 shock-linked BEMP relocations and 0.098 for 123 BIHS relocations attributed to river-erosion land loss. In a broader BIHS sample of 1,857 current migrants, the gain is 0.108 and persists when each origin district is omitted from training. The smaller climate samples expose a boundary. GIS does not improve the full stay-versus-leave problem when an entire origin is unseen, although its interdistrict advantage remains positive. District characteristics therefore carry transferable information about destination ranking, while the decision to remain within an origin district depends more heavily on local conditions. The analysis is predictive and associational; it does not identify causal effects of destination attributes.
+Climate-mobility research usually asks whether an environmental shock changes the probability of moving. This paper begins after a move has occurred and asks which destination is chosen. I construct revealed district-choice events from two independent Bangladesh surveys and compare every observed destination with the same 64-district candidate set. The strongest transport test uses 1,857 current migrants in the nationally representative rural Bangladesh Integrated Household Survey (BIHS), spanning all 64 origin districts. A pre-specified GIS model adds historical flood exposure, built surface, travel time to cities, and cropland to a fitted distance-population gravity model. GIS lowers held-out log loss by 0.108 in household-grouped validation, by 0.101 when each origin district is excluded from training, and by 0.094 when a model trained on 2015 predicts 2018-19 moves. Climate-specific tests preserve the same outcome and feature set: the gain is 0.098 for 123 BIHS relocations attributed to erosion-related land loss and 0.108 for 184 shock-linked relocations in the Bangladesh Environmental Mobility Panel (BEMP). This is distinct from prior BEMP research on whether shocks change migration likelihood, type, or distance: the sample here is conditional on observed movement, and the outcome is the destination district. In the smaller climate samples, full-choice performance does not transfer cleanly to unseen origins, although the interdistrict advantage remains positive. District characteristics therefore carry portable information about destination ranking, but local context remains important for whether a move stays inside the origin district. The analysis is predictive, not causal.
 
 ## 1. Introduction
 
@@ -23,33 +22,41 @@ The destination receives less attention. Findlay (2011) argued that climate-mobi
 
 This paper treats an observed move as a choice among candidate districts. It asks whether a small set of mapped destination attributes predicts that choice better than two familiar spatial baselines. The gravity model rewards large, nearby destinations. The radiation model also accounts for population between origin and destination (Simini et al. 2012). The GIS model retains distance and population, then adds flood history, settlement intensity, urban accessibility, and cropland.
 
-The design has three advantages. First, BEMP supplies longitudinal shock histories and household relocations from erosion-prone communities. Second, BIHS provides an independent river-erosion relocation question and national origin coverage. Third, every model faces household-grouped, temporal, and origin-held-out tests. The analysis therefore separates ordinary out-of-sample prediction from the harder problem of transferring a learned destination utility to a place absent from training.
+The study is not a re-estimation of the existing BEMP migration-incidence result. Freihardt (2025) asks whether environmental shocks change the probability, type, and distance of migration among climate-vulnerable households. I condition on a recorded move and make the chosen destination district the outcome. BEMP supplies the strongest shock-to-move timing, but its seven observed climate-sample origins cannot support a national transport claim. For that reason, the empirical argument begins with BIHS: an independent survey with all 64 origin districts, a later-wave test, and an erosion-specific replication.
 
-The result is consistent across surveys. GIS improves ordinary out-of-sample destination probabilities in the BEMP shock-linked sample, the BIHS river-erosion sample, all BIHS household relocations, and the larger BIHS migrant sample. The national migrant result also transfers across unseen origins and into a later survey wave. The climate samples are less portable in the full 64-district task because that task mixes two decisions: whether to stay inside the origin district and where to go after crossing its boundary. When the analysis conditions on a cross-district move, the GIS advantage remains positive in both climate datasets, although small samples leave wide intervals.
+The national BIHS result is the main portability test. GIS improves destination prediction among 1,857 migrants, survives exclusion of each test origin from training, and transfers from 2015 to 2018-19. The two climate-specific samples then ask whether the same pre-specified destination model holds in a narrower substantive setting. It does under household-grouped validation. The harder origin-held-out results expose a boundary: predicting whether a move remains inside an unseen origin district is less portable than ranking destinations after an interdistrict move is known.
 
 The contribution is deliberately narrow. Four district characteristics add repeatable predictive information beyond distance and population. Individual coefficients do not describe causal preferences. Districts also hide movement within villages and neighborhoods. Those limits define what the public survey geography can support.
 
-## 2. Destination choice after environmental loss
+## 2. Destination choice, spatial interaction, and environmental loss
 
-Environmental shocks can alter mobility through several channels. Erosion destroys land and housing. Flooding damages crops, assets, transport, and local employment. A household may move to protect income, remain close to land and relatives, or lack the money needed for a distant move. Freihardt (2025) finds that erosion can raise migration aspirations while reducing the capability to move among Jamuna River households. Related BEMP work documents frequent short-distance relocations and the role of land access and social ties (Freihardt 2026).
+### 2.1 Destination choice as spatial utility
 
-These mechanisms imply that staying and destination selection need not follow the same process. A household can rebuild nearby, shift within its district, or cross a district boundary. The local availability of land, kin support, credit, roads, and temporary shelter may govern the first split. Once a household crosses the boundary, candidate destinations differ in accessibility, settlement, agriculture, flood history, and the opportunities those features approximate.
+Migration can be understood as an investment whose expected returns are weighed against monetary, informational, social, and psychological costs (Sjaastad 1962). That decision is spatial because neither returns nor costs are constant across destinations. In a random-utility formulation, a mover assigns each candidate place a systematic value and an unobserved household-place component, then selects the alternative with the highest utility (McFadden 1974). Conditional-logit migration models make this comparison explicit by placing the attributes of chosen and unchosen destinations in the same choice set (Davies, Greenwood, and Li 2001).
 
-The four GIS variables do not measure every part of that decision. Built surface is not a wage. Cropland is not a job offer. Travel time is not a household's actual trip. Flood exposure is not perceived safety. Together, however, the variables provide a common description of all 64 districts. They let the model score destinations that received few or no moves in the estimation sample without learning a separate fixed effect for each district.
+Gravity models capture two durable parts of this structure. Destination population approximates opportunity mass, while distance absorbs travel cost, information loss, separation from social ties, and other frictions. Yet distance and size do not exhaust spatial choice. Competing-destinations theory argues that the attractiveness of one place depends on the alternatives around it, not only on its bilateral relation to the origin (Fotheringham 1983). The radiation model formalizes a related intuition through the population opportunities between origin and destination (Simini et al. 2012). These approaches motivate demanding baselines: GIS should add value only if destination structure contains information beyond proximity, scale, and intervening opportunity.
 
-The empirical hypothesis is predictive: adding the four GIS characteristics should lower held-out log loss relative to gravity. The harder transport hypothesis asks whether the same improvement survives when the model has never observed a mover from the test origin. The two questions require separate answers.
+### 2.2 Migration systems under environmental stress
+
+Migration systems are sustained by feedback among origins, destinations, earlier movers, information, and institutions (Mabogunje 1970). Environmental loss enters that system as a constraint and an adjustment pressure rather than as a mechanical command to move (Wolpert 1966; Black et al. 2011). Erosion can remove land and housing. Flooding can damage crops, assets, transport, and local work. The same shock can make departure more urgent while destroying the resources needed to travel, rent, or rebuild.
+
+Destination choice therefore follows a constrained comparison. A household may value wage access, housing, cultivable land, social support, or safety from a repeated hazard, but it can choose only among places it knows and can reach. The analytical set of 64 districts is an evaluation universe, not a claim that every respondent consciously considered every district. It provides a consistent set of chosen and unchosen alternatives against which models can be tested.
+
+The four GIS variables are common proxies for parts of this destination system. Built surface is not a wage; cropland is not a job offer; travel time is not a household's actual trip; historical flood exposure is not perceived safety. They describe candidate districts where direct, pre-move measures of jobs, rents, land access, and social ties are unavailable. Their coefficients should therefore be read as predictive weights, not estimates of household preferences or causal effects.
+
+### 2.3 What this study adds to the BEMP evidence
+
+Freihardt (2025) uses BEMP to estimate how environmental shocks affect migration likelihood, type, and distance. Related work describes short-distance mobility, land access, and social ties among Jamuna River households (Freihardt 2026). Those are origin-side and migration-incidence questions: did a household move, what kind of move occurred, and how far did it go?
+
+This paper asks a different conditional question. After a move is observed, which district receives it? The unit of analysis is an event-candidate pair, the outcome is the reported destination district, and every observed destination is evaluated against unchosen districts. BEMP is used for its unusually strong sequence of recorded shocks and later relocations. BIHS is not a supplementary robustness check; it is an independent replication with broader origin support and the main test of whether destination utility travels across places and time. No result here estimates the causal effect of an environmental shock on migration incidence or the causal effect of a destination attribute on choice.
+
+### 2.4 Predictions
+
+The theory yields three tests. First, destination GIS characteristics should lower held-out log loss relative to fitted gravity. Second, if they capture portable destination utility rather than origin-specific regularities, that advantage should survive later-wave prediction and the exclusion of each test origin from training. Third, portability should be weaker for the full 64-district task than for the interdistrict task. The full task combines whether a move stays inside the origin with where it goes; the latter conditions on crossing the district boundary.
 
 ## 3. Data
 
-### 3.1 Bangladesh Environmental Mobility Panel
-
-BEMP followed 1,691 households and 2,170 panel respondents from 2021 through 2024 in communities selected along the eastern bank of the Jamuna River. The public release contains four annual in-person rounds and ten shorter phone rounds (Freihardt, Rudolph, and Koubi 2026). Migrants were followed across survey waves.
-
-The event ledger uses new household-destination observations and reconstructs the latest valid pre-move district. A shock-linked event requires a recorded home flood or riverbank-erosion shock before the move interval. Public data identify origin and destination districts, not exact household coordinates. The primary BEMP sample contains 184 whole- or partial-household relocations from 137 households. Seventy-one cross a district boundary; 113 remain within the origin district.
-
-BEMP offers the strongest temporal connection between environmental exposure and a later move. Its geographic support is narrow. The climate sample comes from seven observed origin districts and concentrates heavily in a small set of destinations. National candidate coverage cannot turn those origins into a national sample.
-
-### 3.2 Bangladesh Integrated Household Survey
+### 3.1 Bangladesh Integrated Household Survey
 
 BIHS is a nationally representative rural household panel administered in 2011-12, 2015, and 2018-19 by the International Food Policy Research Institute. It samples all administrative divisions and contains detailed modules on households, agriculture, shocks, migration, and remittances (IFPRI 2011, 2016, 2020).
 
@@ -58,6 +65,14 @@ I construct two BIHS designs. The 2015 household-relocation module records the p
 The second design uses current migrants reported in the 2015 and 2018-19 migration modules. The conservative event ledger keeps 1,857 interval-specific domestic migrants from 1,404 households. Each person was away for at least six months and outside the origin upazila. The sample covers all 64 origin districts and 63 observed destination districts; 1,208 events cross a district boundary. It records a stock of current individual migrants, not complete migration spells or whole-household displacement.
 
 BIHS supplies broader geographic coverage and an independent erosion measure. Its environmental timing is weaker than BEMP's. Some household relocations are retrospective, and the current-migrant sample should not be described as a climate-migration sample.
+
+### 3.2 Bangladesh Environmental Mobility Panel
+
+BEMP followed 1,691 households and 2,170 panel respondents from 2021 through 2024 in communities selected along the eastern bank of the Jamuna River. The public release contains four annual in-person rounds and ten shorter phone rounds (Freihardt, Rudolph, and Koubi 2026). Migrants were followed across survey waves.
+
+The event ledger uses new household-destination observations and reconstructs the latest valid pre-move district. A shock-linked event requires a recorded home flood or riverbank-erosion shock before the move interval. Public data identify origin and destination districts, not exact household coordinates. The primary BEMP sample contains 184 whole- or partial-household relocations from 137 households. Seventy-one cross a district boundary; 113 remain within the origin district.
+
+BEMP offers the strongest temporal connection between environmental exposure and a later move. Its geographic support is narrow. The climate sample comes from seven observed origin districts and concentrates heavily in a small set of destinations. National candidate coverage cannot turn those origins into a national sample.
 
 ### 3.3 Choice sets and administrative geography
 
@@ -69,10 +84,10 @@ District names from BEMP, BIHS, and GIS sources are reconciled to a frozen Bangl
 
 | Dataset and sample | Unit | Events | Cross-district events | Observed origins | Timing strength |
 |---|---|---:|---:|---:|---|
-| BEMP shock-linked relocations | Whole/partial household move | 184 | 71 | 7 | Lagged recorded flood or erosion before move interval |
 | BIHS erosion relocations | Household-head residential move | 123 | 71 | 29 | Retrospective reason: erosion-related land loss |
 | BIHS all household relocations | Household-head residential move | 526 | 236 | 61 | Retrospective move history |
 | BIHS interval migrants | Current individual migrant | 1,857 | 1,208 | 64 | Interval-specific current migrant stock |
+| BEMP shock-linked relocations | Whole/partial household move | 184 | 71 | 7 | Lagged recorded flood or erosion before move interval |
 
 ## 4. Destination measures
 
@@ -119,40 +134,13 @@ The full task and interdistrict task answer different questions. Full-choice per
 
 ## 6. Results
 
-### 6.1 Grouped out-of-sample prediction
+### 6.1 Independent BIHS replication and transport
 
-GIS lowers held-out log loss in every pre-specified grouped comparison. Table 2 reports the direct model, which keeps the candidate utility identical across surveys.
+The broad BIHS migrant sample provides the strongest geographic test because it includes all 64 origin districts. GIS lowers household-grouped held-out log loss from 2.060 to 1.952 across 1,857 events, a gain of 0.108 [0.082, 0.135]. Among the 1,208 cross-district events, the gain is also 0.108 [0.073, 0.145]. These migrants are not labeled as climate migrants; their role is to test whether the destination specification works across Bangladesh rather than only near the Jamuna River.
 
-**Table 2. GIS gain over fitted gravity in household-grouped validation**
+The result survives two harder changes in the training data. Leave-one-origin-out validation excludes every observation from the test origin district. The full-choice gain remains 0.101 [0.074, 0.128], and the interdistrict gain is 0.107 [0.073, 0.144]. Forty-six of 64 origins have a positive mean full-choice gain. A temporal test trained on 2015 migrants and evaluated on 1,383 migrants in 2018-19 gives a full-choice gain of 0.094; among 842 cross-district events, the gain is 0.112.
 
-| Dataset and sample | Choice set | Events | Gravity log loss | GIS log loss | GIS gain | Household-cluster 95% interval |
-|---|---|---:|---:|---:|---:|---:|
-| BEMP shock-linked relocations | Full 64 | 184 | 1.630 | 1.522 | 0.108 | [0.023, 0.189] |
-| BEMP shock-linked relocations | Interdistrict 63 | 71 | 2.484 | 2.157 | 0.327 | [-0.001, 0.634] |
-| BIHS erosion relocations | Full 64 | 123 | 2.563 | 2.465 | 0.098 | [0.028, 0.163] |
-| BIHS erosion relocations | Interdistrict 63 | 71 | 3.256 | 3.074 | 0.182 | [0.076, 0.287] |
-| BIHS all household relocations | Full 64 | 526 | 2.206 | 2.148 | 0.058 | [0.030, 0.088] |
-| BIHS all household relocations | Interdistrict 63 | 236 | 3.253 | 3.138 | 0.116 | [0.056, 0.179] |
-| BIHS interval migrants | Full 64 | 1,857 | 2.060 | 1.952 | 0.108 | [0.082, 0.135] |
-| BIHS interval migrants | Interdistrict 63 | 1,208 | 2.021 | 1.913 | 0.108 | [0.073, 0.145] |
-
-The two most comparable climate estimates are close: 0.108 in BEMP and 0.098 in the BIHS erosion sample. The broader national BIHS migrant sample also produces a 0.108 gain. These values were estimated in separate surveys with different migration definitions. Their similarity was not imposed.
-
-The nested full-choice model treats staying and crossing as separate stages. Its GIS gains over direct gravity are 0.124 for BEMP shock-linked moves, 0.129 for BIHS erosion relocations, 0.116 for all BIHS household relocations, and 0.216 for the national migrant sample. These results support the distinction between the boundary-crossing decision and destination ranking.
-
-The adapted radiation model performs worse than fitted gravity in the BIHS interdistrict samples. Population between origin and destination does not replace the four destination measures in this application.
-
-![Figure 1. Cross-dataset GIS gain over gravity. Points show mean held-out log-loss improvement; whiskers show paired 95% household-cluster bootstrap intervals.](../../outputs/figures/cross_dataset_gis_gain_forest.png)
-
-### 6.2 Time and unseen origins
-
-Training on BIHS 2015 migrants and testing on 2018-19 migrants preserves the gain. GIS improves full-choice log loss by 0.094 across 1,383 later-wave events and interdistrict log loss by 0.112 across 842 later-wave events.
-
-The national model also transfers across origins. Leave-one-origin-out gains are 0.101 [0.074, 0.128] for the full choice set and 0.107 [0.073, 0.144] for interdistrict choice. Forty-six of 64 origins have a positive mean full-choice gain. Destination attributes learned elsewhere therefore retain predictive value for movers from districts omitted during estimation.
-
-Climate-specific transport is weaker. The BIHS erosion sample produces a full-choice gain of -0.016 [-0.086, 0.045] and an interdistrict gain of 0.058 [-0.034, 0.140]. BEMP shows the same split in direction: -0.127 for full choice and +0.224 for interdistrict choice. BEMP has only seven climate-sample origins, so those origin-held-out estimates do not support a national claim.
-
-**Table 3. Harder validation tests**
+**Table 2. Transport tests led by the independent BIHS sample**
 
 | Sample | Test | Choice set | Events | GIS gain | 95% interval |
 |---|---|---|---:|---:|---:|
@@ -163,9 +151,34 @@ Climate-specific transport is weaker. The BIHS erosion sample produces a full-ch
 | BIHS interval migrants | Train 2015, test 2018-19 | Full 64 | 1,383 | 0.094 | Not bootstrapped |
 | BIHS interval migrants | Train 2015, test 2018-19 | Interdistrict 63 | 842 | 0.112 | Not bootstrapped |
 
-The evidence points to an origin boundary. A model trained elsewhere has difficulty assigning the probability of staying in an unseen erosion-affected district. Once a cross-district move is known, GIS destination ranking remains favorable in direction, although 71 erosion events cannot estimate that transfer precisely.
+![Figure 1. GIS gain under grouped, origin-held-out, and temporal validation.](../../outputs/figures/validation_transportability_comparison.png)
 
-![Figure 2. GIS gain under grouped, origin-held-out, and temporal validation.](../../outputs/figures/validation_transportability_comparison.png)
+### 6.2 Climate-specific destination prediction
+
+The erosion-specific BIHS sample is an independent climate replication with a narrower sample but wider origin support than BEMP. Across 123 household relocations attributed to erosion-related land loss, GIS lowers full-choice log loss from 2.563 to 2.465, a gain of 0.098 [0.028, 0.163]. Among 71 cross-district relocations, the gain is 0.182 [0.076, 0.287].
+
+BEMP supplies the stronger sequence of a recorded flood or erosion shock followed by a later move. Across 184 shock-linked relocations, GIS lowers full-choice log loss from 1.630 to 1.522, a gain of 0.108 [0.023, 0.189]. Its interdistrict gain is 0.327 [-0.001, 0.634] across 71 events. The close full-choice estimates—0.098 in BIHS and 0.108 in BEMP—come from different surveys, migration definitions, and origin supports; their similarity was not imposed.
+
+**Table 3. GIS gain over fitted gravity in household-grouped validation**
+
+| Dataset and sample | Choice set | Events | Gravity log loss | GIS log loss | GIS gain | Household-cluster 95% interval |
+|---|---|---:|---:|---:|---:|---:|
+| BIHS interval migrants | Full 64 | 1,857 | 2.060 | 1.952 | 0.108 | [0.082, 0.135] |
+| BIHS interval migrants | Interdistrict 63 | 1,208 | 2.021 | 1.913 | 0.108 | [0.073, 0.145] |
+| BIHS erosion relocations | Full 64 | 123 | 2.563 | 2.465 | 0.098 | [0.028, 0.163] |
+| BIHS erosion relocations | Interdistrict 63 | 71 | 3.256 | 3.074 | 0.182 | [0.076, 0.287] |
+| BIHS all household relocations | Full 64 | 526 | 2.206 | 2.148 | 0.058 | [0.030, 0.088] |
+| BIHS all household relocations | Interdistrict 63 | 236 | 3.253 | 3.138 | 0.116 | [0.056, 0.179] |
+| BEMP shock-linked relocations | Full 64 | 184 | 1.630 | 1.522 | 0.108 | [0.023, 0.189] |
+| BEMP shock-linked relocations | Interdistrict 63 | 71 | 2.484 | 2.157 | 0.327 | [-0.001, 0.634] |
+
+The nested full-choice model treats staying and crossing as separate stages. Its GIS gains over direct gravity are 0.216 for the national migrant sample, 0.129 for BIHS erosion relocations, 0.116 for all BIHS household relocations, and 0.124 for BEMP shock-linked moves. The adapted radiation model performs worse than fitted gravity in the BIHS interdistrict samples. Population between origin and destination does not replace the four destination measures in this application.
+
+The climate-specific origin-held-out tests are less stable. BIHS erosion relocations give a full-choice gain of -0.016 [-0.086, 0.045] and an interdistrict gain of 0.058 [-0.034, 0.140]. BEMP shows the same directional split: -0.127 for full choice and +0.224 for interdistrict choice. BEMP has only seven climate-sample origins, so its origin-held-out estimates cannot support a national claim.
+
+The evidence points to an origin boundary. A model trained elsewhere has difficulty assigning the probability of staying in an unseen erosion-affected district. Once a cross-district move is known, GIS destination ranking remains favorable in direction, although the climate samples are too small to estimate that transfer precisely.
+
+![Figure 2. Cross-dataset GIS gain over gravity. Points show mean held-out log-loss improvement; whiskers show paired 95% household-cluster bootstrap intervals.](../../outputs/figures/cross_dataset_gis_gain_forest.png)
 
 ### 6.3 One household's observed move
 
@@ -187,7 +200,7 @@ Social networks deserve a separate mechanism study. Among the 1,857 BIHS interva
 
 For planners, the result shifts attention from counts alone to receiving places. Districts differ in settlement, agricultural land, access to cities, and accumulated flood exposure. A destination model can help identify which places may receive movers under observed migration systems. It cannot substitute for housing, labor-market, infrastructure, or social-network data. Those measures should enter future work using the same candidate-wide and leakage-safe design.
 
-## 8. Limitations and research ethics
+## 8. Limitations
 
 The public geography stops at districts. The analysis cannot distinguish a move across a river from a move across a district, recover neighborhood choice, or measure distance between exact homes. District averages also combine heterogeneous urban, rural, and hazard environments.
 
@@ -199,7 +212,29 @@ Model validation also has finite support. The BEMP climate sample has seven obse
 
 The public narrative preserves anonymity. Household identifiers, raw survey records, and event-level prediction tables should not be published in the open repository. The household illustration reports only district-level origin, destination, year, and the survey's categorical reason. No attempt was made to infer identity or fill gaps in the household's story.
 
-## 9. Conclusion
+## 9. Statements and declarations
+
+### Ethics approval and consent to participate
+
+This study is a secondary analysis of anonymized public-use survey data. The author had no interaction with participants and no access to direct identifiers. The original BEMP data collection received approval from the ETH Zurich ethics committee (EK 2020-N-67), and participants provided informed consent (Freihardt 2025). BIHS received approval from the Institutional Review Board of the International Food Policy Research Institute (2014-44-PHND-D); the Bangladesh Ministry of Agriculture reviewed the survey instruments, and participants provided informed verbal consent. No additional participant consent was sought for this secondary analysis.
+
+### Data availability
+
+BEMP public-use data are available through Zenodo at https://doi.org/10.5281/zenodo.18229498. BIHS public-use data are available through Harvard Dataverse for 2011-12 (https://doi.org/10.7910/DVN/OR6MHT), 2015 (https://doi.org/10.7910/DVN/BXSYEL), and 2018-19 (https://doi.org/10.7910/DVN/NXKLZJ). Analysis code, aggregate outputs, figures, and data-access instructions are available at https://github.com/shailbelani23/bangladesh-climate-destination-choice. The repository does not redistribute raw survey records, household identifiers, event ledgers, event-level predictions, or restricted derived flood layers. Researchers can reconstruct the analysis after obtaining the source data under their respective terms.
+
+### Funding
+
+This research received no external funding.
+
+### Competing interests
+
+The author declares no competing interests.
+
+### Author contributions
+
+Shail Belani: conceptualization; data curation; formal analysis; investigation; methodology; software; visualization; writing—original draft; writing—review and editing.
+
+## 10. Conclusion
 
 An observed climate-related move contains two geographic facts: where the household left and where it arrived. This project models the second fact directly. Across BEMP and BIHS, destination flood history, built surface, urban accessibility, and cropland improve held-out district probabilities beyond population and distance.
 
@@ -211,7 +246,11 @@ Bangladesh Bureau of Statistics. 2023. *Population and Housing Census 2022: Nati
 
 Black, Richard, W. Neil Adger, Nigel W. Arnell, Stefan Dercon, Andrew Geddes, and David Thomas. 2011. "The Effect of Environmental Change on Human Migration." *Global Environmental Change* 21(S1): S3-S11. https://doi.org/10.1016/j.gloenvcha.2011.10.001.
 
+Davies, Paul S., Michael J. Greenwood, and Haizheng Li. 2001. "A Conditional Logit Approach to U.S. State-to-State Migration." *Journal of Regional Science* 41(2): 337-360. https://doi.org/10.1111/0022-4146.00220.
+
 Findlay, Allan M. 2011. "Migrant Destinations in an Era of Environmental Change." *Global Environmental Change* 21(S1): S50-S58. https://doi.org/10.1016/j.gloenvcha.2011.09.004.
+
+Fotheringham, A. Stewart. 1983. "A New Set of Spatial-Interaction Models: The Theory of Competing Destinations." *Environment and Planning A* 15(1): 15-36. https://doi.org/10.1177/0308518X8301500103.
 
 Freihardt, Jan. 2025. "Environmental Shocks and Migration Among a Climate-Vulnerable Population in Bangladesh." *Population and Environment* 47: 6. https://doi.org/10.1007/s11111-025-00478-7.
 
@@ -227,13 +266,21 @@ International Food Policy Research Institute. 2016. *Bangladesh Integrated House
 
 International Food Policy Research Institute. 2020. *Bangladesh Integrated Household Survey 2018-2019*. Harvard Dataverse. https://doi.org/10.7910/DVN/NXKLZJ.
 
+Mabogunje, Akin L. 1970. "Systems Approach to a Theory of Rural-Urban Migration." *Geographical Analysis* 2(1): 1-18. https://doi.org/10.1111/j.1538-4632.1970.tb00140.x.
+
+McFadden, Daniel. 1974. "Conditional Logit Analysis of Qualitative Choice Behavior." In *Frontiers in Econometrics*, edited by Paul Zarembka, 105-142. New York: Academic Press.
+
 Schiavina, Marcello, Michele Melchiorri, Martino Pesaresi, Panagiotis Politis, Sergio Freire, Lorenzo Maffenini, Paolo Florio, Daniele Ehrlich, Katharina Goch, Alice Carioli, Johannes Uhl, Pierpaolo Tommasi, and Thomas Kemper. 2023. *GHSL Data Package 2023*. Luxembourg: Publications Office of the European Union. https://doi.org/10.2760/098587.
+
+Sjaastad, Larry A. 1962. "The Costs and Returns of Human Migration." *Journal of Political Economy* 70(5, Part 2): 80-93. https://doi.org/10.1086/258726.
 
 Simini, Filippo, Marta C. González, Amos Maritan, and Albert-László Barabási. 2012. "A Universal Model for Mobility and Migration Patterns." *Nature* 484: 96-100. https://doi.org/10.1038/nature10856.
 
 Tellman, Beth, Jonathan A. Sullivan, C. Kuhn, A. J. Kettner, C. S. Doyle, G. R. Brakenridge, T. A. Erickson, and D. A. Slayback. 2021. "Satellite Imaging Reveals Increased Proportion of Population Exposed to Floods." *Nature* 596: 80-86. https://doi.org/10.1038/s41586-021-03695-w.
 
 Weiss, Daniel J., Andy Nelson, Heather S. Gibson, William Temperley, Stephen Peedell, Alistair Lieber, M. Hancher, et al. 2018. "A Global Map of Travel Time to Cities to Assess Inequalities in Accessibility in 2015." *Nature* 553: 333-336. https://doi.org/10.1038/nature25181.
+
+Wolpert, Julian. 1966. "Migration as an Adjustment to Environmental Stress." *Journal of Social Issues* 22(4): 92-102. https://doi.org/10.1111/j.1540-4560.1966.tb00552.x.
 
 Zanaga, Daniele, Ruben Van De Kerchove, Wouter De Keersmaecker, Niels Souverijns, Carsten Brockmann, R. Quast, J. Wevers, et al. 2021. *ESA WorldCover 10 m 2020 v100*. Zenodo. https://doi.org/10.5281/zenodo.5571936.
 

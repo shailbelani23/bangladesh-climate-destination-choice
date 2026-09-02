@@ -4,7 +4,7 @@
 
 **Working title:** *Where Do Climate-Affected Households Go? Revealed District Choice in Bangladesh*
 
-**Author:** Shail Belani, Northwestern University; Undergraduate Researcher, Global Poverty Research Lab
+**Author:** Shail Belani, Undergraduate Researcher, Northwestern University
 
 **Question:** Among observed movers, do candidate destinations' mapped environmental, settlement, accessibility, and agricultural characteristics predict the chosen district better than distance and population alone?
 
@@ -12,12 +12,16 @@
 
 Across two independent Bangladesh surveys, four pre-specified district GIS measures improve out-of-sample destination probabilities relative to the same fitted gravity model. The evidence supports a predictive claim about where observed movers go. It does not identify a causal effect of any GIS characteristic on migration.
 
+## Distinction from prior BEMP research
+
+Freihardt (2025) estimates whether environmental shocks change migration likelihood, type, and distance. This project conditions on an observed move and predicts the chosen destination district. BIHS supplies the independent replication and the main transport evidence; BEMP supplies the stronger shock-to-move timing.
+
 ## Primary estimates
 
-- BEMP shock-linked household moves, full 64-district choice set: 184 events; GIS gain 0.108 log-loss units; household-cluster 95% interval [0.023, 0.189].
-- BIHS river-erosion household moves, full 64-district choice set: 123 events; gain 0.098; interval [0.028, 0.163].
 - BIHS national current migrants, full choice set: 1,857 events; gain 0.108; interval [0.082, 0.135].
 - BIHS national current migrants, interdistrict choice set: 1,208 events; gain 0.108; interval [0.073, 0.145].
+- BIHS river-erosion household moves, full 64-district choice set: 123 events; gain 0.098; interval [0.028, 0.163].
+- BEMP shock-linked household moves, full 64-district choice set: 184 events; GIS gain 0.108 log-loss units; household-cluster 95% interval [0.023, 0.189].
 
 Positive gain equals gravity log loss minus GIS log loss. Larger values mean that the GIS model assigned more probability, on average, to the observed destination.
 
@@ -32,4 +36,3 @@ An anonymized BIHS household head reported moving from Faridpur to Manikganj in 
 ## Language rules
 
 Use **predicts**, **improves out-of-sample probability**, **is associated with**, and **transfers across held-out origins**. Do not use **causes**, **proves preference**, **climate refugee**, **nationally representative climate displacement**, or village-level language. Public origins and destinations are districts. BIHS V1 records current individual migrants; BEMP and BIHS B4 supply household-relocation samples with different timing strengths.
-

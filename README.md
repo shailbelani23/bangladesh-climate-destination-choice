@@ -55,10 +55,9 @@ The repository includes code, documentation, aggregate results, district-level G
 
 ## Author
 
-Shail Belani  
-Northwestern University  
-Undergraduate Researcher, Global Poverty Research Lab  
-shailbelani2027@u.northwestern.edu
+Shail Belani<br>
+Undergraduate Researcher, Northwestern University<br>
+[shailbelani2027@u.northwestern.edu](mailto:shailbelani2027@u.northwestern.edu)
 
 ## License
 
